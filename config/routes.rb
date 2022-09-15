@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
   root to: "public/homes#top"
   get 'admin' => 'public/homes#about'
 
@@ -11,7 +11,14 @@ Rails.application.routes.draw do
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     sessions: "admin/sessions"
   }
-  
+
+  get 'users/my_page' => 'public/users#show'
+  get 'users/information/edit' => 'public/users#edit'
+  patch 'users/information' => 'public/users#update'
+  get 'users/unsubscribe' => 'public/users#unsubscribe'
+  patch 'users/withdraw' => 'public/users#withdraw'
+
+
   namespace :admin do
     resources :posts, only: [:new, :edit, :update, :show, :update, :destroy]
     resources :post_details
@@ -19,7 +26,13 @@ Rails.application.routes.draw do
     resources :homes, only: [:top]
     resources :reviews, only: [:index, :edit, :update, :destroy]
   end
-  
-  
-  
+
+  scope module: :public do
+    resources :posts
+    resources :post_details, only: [:new, :edit, :update, :destroy, :create]
+    resources :reviews, only: [:index, :new, :create]
+    resources :comments, only: [:create]
+    resources :follows, only: [:create, :dest]
+  end
+
 end
