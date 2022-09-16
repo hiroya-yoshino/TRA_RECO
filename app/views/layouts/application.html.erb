@@ -14,11 +14,49 @@
 
   <body>
     <header>
-      <nav class="navbar navbar-expand-lg navbar-light bg-primary py-4 px-2 shadow bg-body">
+      <nav class="navbar navbar-expand-lg navbar-light bg-primary p-1 shadow bg-body">
+        <div class="container mx-0">
+          <a class="navbar-brand mr-auto border border-light ml-2 my-2 p-2" href="/">
+              <div class="text-light">
+                TRA<i class="far fa-map text-light px-1"></i>RECO
+              </div>
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav mr-auto ">
+    <% if admin_signed_in? %>
 
+    <% elsif user_signed_in? %>
+    <li class="nav-item mx-4">
+        <%= link_to about_path, class:"nav-link button text-white" do %>
+          TRARECOとは？
+        <% end %>
+    </li>
+    <% else %>
+    <li class="nav-item mx-4">
+        <%= link_to about_path, class:"nav-link button text-white" do %>
+          TRARECOとは？
+        <% end %>
+    </li>
+    <% end %>
+
+    </ul>
+    </div>
+        </div>
       </nav>
 
     </header>
     <%= yield %>
+    <footer class="fixed-bottom border-top border-dark bg-primary">
+      <div class="container">
+        <div class="row">
+          <div class="mx-auto my-2">
+            <h5 class="text-white">TRARECO</h2>
+          </div>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>

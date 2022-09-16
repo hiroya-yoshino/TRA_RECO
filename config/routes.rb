@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   root to: "public/homes#top"
-  get 'admin' => 'public/homes#about'
+  get 'about' => 'public/homes#about'
 
   devise_for :users,skip: [:passwords], controllers: {
     registrations: "public/registrations",
@@ -32,7 +32,7 @@ Rails.application.routes.draw do
     resources :post_details, only: [:new, :edit, :update, :destroy, :create]
     resources :reviews, only: [:index, :new, :create]
     resources :comments, only: [:create]
-    resources :follows, only: [:create, :dest]
+    resources :follows, only: [:create, :destroy]
   end
 
 end
