@@ -1,0 +1,24 @@
+<div class="container px-5">
+  <div class="row m-5">
+    <div class="col-md-10 bg-white shadow rounded mx-auto py-3 px-5">
+      <div class="row">
+        <%= image_tag @user.get_profile_image(50,100), class: "rounded-circle border mr-5" %>
+        <p class="font-weight-bold mx-4 mt-3"><%= @user.name %></p>
+        <p class="font-weight-bold mx-4 mt-3"><%= User.sexes_i18n[@user.sex] %></p>
+        <p class="font-weight-bold mx-4 mt-3"><%= @user.birth_display %></p>
+        if 
+        <%= link_to '編集', users_information_edit_path, class: "btn border-primary rounded btn-white ml-auto text-primary mt-3" %>
+      </div>
+      <div class="row">
+        <p><%= @user.introduction %></p>
+      </div>
+
+      <div class="row">
+        <%= link_to 'フォロー一覧', follows_path, class: "btn border-primary rounded btn-white mr-auto text-primary" %>
+      </div>
+    </div>
+    <div class="col-md-10 mt-5 mx-auto">
+      <h3 class="font-weight-bold text-center">投稿一覧</h3>
+    </div>
+  </div>
+</div>

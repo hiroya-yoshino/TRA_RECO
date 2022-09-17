@@ -1,35 +1,25 @@
 <div class="container px-5">
   <div class="row m-5">
     <div class="col-md-10 bg-white shadow rounded mx-auto py-3 px-5">
-    <%= form_with model: @user, url: user_registration_path, method: :post do |f| %>
-    <h5 class ="form-group font-weight-bold text-center">新規登録</h5>
+    <%= form_with model: @user, url: users_information_path, method: :patch do |f| %>
+    <h5 class ="form-group font-weight-bold text-center">編集</h5>
     <div class="form-group">
       <p class="text-dark mb-0 mt-4">ニックネーム</p>
-      <%= f.text_field :name, autofocus: true, placeholder: "トラコ", class: "form-control" %>
+      <%= f.text_field :name, autofocus: true, class: "form-control" %>
     </div>
     <div class="form-group">
       <p class="text-dark mb-0">メールアドレス</p>
-      <%= f.email_field :email, placeholder: "sample@example.com", class: "form-control" %>
+      <%= f.email_field :email, class: "form-control" %>
     </div>
 
     <div class="form-group">
-      <p class="text-dark mb-0">
-        パスワード
-        <% if @minimum_password_length %>
-        (<%= @minimum_password_length %>文字以上)
-        <% end %>
-      </p>
-      <%= f.password_field :password, class: "form-control" %>
-    </div>
-
-    <div class="form-group">
-      <p class="text-dark mb-0">パスワード(確認用)</p>
-      <%= f.password_field :password_confirmation, class: "form-control" %>
+      <p class="text-dark mb-0">自己紹介</p>
+      <%= f.text_area :introduction, class: "form-control" %>
     </div>
 
     <div class="form-group">
       <p class="text-dark mb-0">生年月日</p>
-      <%= f.text_field :date_of_birth, placeholder: "YYYYMMDD", class: "form-control" %>
+      <%= f.text_field :date_of_birth %>
     </div>
 
     <div class="form-group">

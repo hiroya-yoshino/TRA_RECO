@@ -2,10 +2,10 @@ ja:
     enums:
       user:
         sex:
-          man: "男"
-          woman: "女"
+          man: "男性"
+          woman: "女性"
           other: "その他"
-      
+
       post:
         location:
           hokkaidou: "北海道"

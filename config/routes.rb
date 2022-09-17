@@ -32,7 +32,7 @@ Rails.application.routes.draw do
     resources :post_details, only: [:new, :edit, :update, :destroy, :create]
     resources :reviews, only: [:index, :new, :create]
     resources :comments, only: [:create]
-    resources :follows, only: [:create, :destroy]
+    resources :follows, only: [:create, :destroy, :index]
   end
 
 end
