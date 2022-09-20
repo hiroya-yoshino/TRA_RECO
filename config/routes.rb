@@ -12,12 +12,10 @@ Rails.application.routes.draw do
     sessions: "admin/sessions"
   }
 
-  get 'users/my_page' => 'public/users#show'
   get 'users/information/edit' => 'public/users#edit'
   patch 'users/information' => 'public/users#update'
   get 'users/unsubscribe' => 'public/users#unsubscribe'
   patch 'users/withdraw' => 'public/users#withdraw'
-
 
   namespace :admin do
     resources :posts, only: [:new, :edit, :update, :show, :update, :destroy]
@@ -28,8 +26,10 @@ Rails.application.routes.draw do
   end
 
   scope module: :public do
-    resources :posts
-    resources :post_details, only: [:new, :edit, :update, :destroy, :create]
+    resources :users, only: [:show]
+    resources :posts do
+      resources :post_details, only: [:edit, :update, :destroy, :create]
+    end
     resources :reviews, only: [:index, :new, :create]
     resources :comments, only: [:create]
     resources :follows, only: [:create, :destroy, :index]

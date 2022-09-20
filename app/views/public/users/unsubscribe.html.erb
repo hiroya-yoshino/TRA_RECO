@@ -1,0 +1,25 @@
+<div class="container px-5">
+  <div class="row m-5">
+    <div class="col-md-10 bg-white shadow rounded mx-auto px-5">
+      <div class="row mx-auto mt-5 mb-4">
+        <h5 class="mb-3 mx-auto font-weight-bold">本当に退会しますか？</h5>
+      </div>
+      <div class="row mx-auto">
+        <h6 class="text-center mx-auto font-weight-bold">
+          退会すると、会員登録情報や</br>
+          これまでの投稿やフォロワーが全て削除されます。</br>
+          退会する場合は、</br>
+          退会するをクリックしてください。
+        </h5>
+      </div>
+      <div class="row mx-auto mb-5 mt-4">
+        <div class="col-3 ml-auto mr-5 text-right">
+          <%= link_to '退会しない', user_path(current_user.id), class:"btn btn-primary" %>
+        </div>
+        <div class="col-3 ml-5 mr-auto">
+          <%= link_to "退会する", users_withdraw_path, method: :patch, "data-confirm" => "本当に退会しますか？", class:"btn btn-danger" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

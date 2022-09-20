@@ -25,9 +25,14 @@
     <% if admin_signed_in? %>
 
     <% elsif user_signed_in? %>
-    <li class="nav-item mx-4">
+    <li class="nav-item ml-4 mr-2">
         <%= link_to about_path, class:"nav-link button text-white" do %>
           TRARECOとは？
+        <% end %>
+    </li>
+    <li class="nav-item">
+        <%= link_to new_post_path, class:"nav-link button text-white" do %>
+          旅登録
         <% end %>
     </li>
     <% else %>
@@ -54,7 +59,7 @@
         <% end %>
     </li>
     <li class="nav-item bg-white border border-white rounded mx-2">
-        <%= link_to users_my_page_path, class:"nav-link button text-primary" do %>
+        <%= link_to user_path(current_user.id), class:"nav-link button text-primary" do %>
           マイページ
         <% end %>
     </li>

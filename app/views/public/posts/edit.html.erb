@@ -1,0 +1,13 @@
+<div class="container px-5">
+  <div class="row m-5">
+    <div class="col-md-10 bg-white shadow rounded mx-auto py-3 px-5">
+      <%= form_with model: @post, url: post_path, method: :patch do |f| %>
+        <h5 class ="form-group font-weight-bold text-center">旅編集</h5>
+        <%= render 'form', f: f %>
+        <div class="row mt-5">
+    　　　　<%= f.submit "変更を保存", class:"btn btn-success mx-auto" %>
+  　　　　</div>
+  　　　　<% end %>
+      </div>
+    </div>
+  </div>

@@ -15,4 +15,9 @@ class Post < ApplicationRecord
     fukuokaken:40,sagaken:41,nagasakiken:42,kumamotoken:43,ooitaken:44,miyazakiken:45,kagosimaken:46,okinawaken:47
   }
   
+  has_one_attached :image
+  
+  def date_display
+    date.strip[0..3] + '.' + date.strip[4..5] + '.' + date.strip[6..7]
+  end
 end

@@ -1,0 +1,56 @@
+<div class="container px-5">
+  <h4 class="font-weight-bold text-center mt-5">旅の詳細</h4>
+  <div class="row m-5">
+    <div class="col-md-10 bg-white shadow rounded mx-auto py-3 px-5">
+      <div class="row">
+        <h5 class="font-weight-bold mr-auto"><%= @post.title %></h5>
+      </div>
+      <div class="row border-bottom">
+        <%= image_tag @post.user.profile_image, class: "rounded-circle border", size: "50x50" %>
+        <p class="font-weight-bold mx-4 mt-3"><%= @post.user.name %></p>
+        <p class="mx-4 mt-3">
+          <i class="fas fa-map-marker-alt"></i>
+          <%= Post.locations_i18n[@post.location] %>
+        </p>
+        <p class="mx-4 mt-3"><%= @post.date_display %></p>
+        <% if @post.user.id == current_user.id %>
+          <%= link_to '編集', edit_post_path(@post.id), class: "btn border-primary rounded btn-white ml-auto text-primary my-3" %>
+        <% end %>
+      </div>
+      <div class="row border-bottom p-4">
+        <% @post_details.each do |post_detail| %>
+        <div class="col-md-5">
+          <%#= image_tag post_detail, size: "200x200" %>
+        </div>
+        <div class="col-md-7">
+          <div class="row">
+            <h6 class="font-weight-bold mr-auto"><%= post_detail.spot_name %></h6>
+            <% if @post.user.id == current_user.id %>
+            <%= link_to '編集', edit_post_post_detail_path(post_detail.id), class: "btn border-primary rounded btn-white ml-auto text-primary my-3" %>
+            <% end %>
+          </div>
+          <div class="row">
+            <p><%= post_detail.visit_time.strftime("%-H:%-M") %></p>
+          </div>
+          <div class="row">
+            <p><%= post_detail %></p>
+          </div>
+        </div>
+        <% end %>
+      </div>
+      <% if @post.user.id == current_user.id %>
+      <div class="row mt-3">
+        <div class="col-md-11 mx-auto">
+          <%= form_with model: [@post, @post_detail], method: :post do |f| %>
+          <h5 class ="form-group font-weight-bold text-center">旅ルート登録</h5>
+          <%= render 'public/post_details/form', f: f %>
+          <div class="row mt-5">
+    　　　　<%= f.submit "保存", class:"btn btn-primary mx-auto px-5" %>
+  　　　   　</div>
+          <% end %>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>

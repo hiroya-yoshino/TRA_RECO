@@ -2,14 +2,15 @@
   <div class="row m-5">
     <div class="col-md-10 bg-white shadow rounded mx-auto py-3 px-5">
       <div class="row">
-        <%= image_tag @user.get_profile_image(50,100), class: "rounded-circle border mr-5" %>
+        <%= image_tag @user.profile_image, class: "rounded-circle border mr-5", size: "70x70" %>
         <p class="font-weight-bold mx-4 mt-3"><%= @user.name %></p>
         <p class="font-weight-bold mx-4 mt-3"><%= User.sexes_i18n[@user.sex] %></p>
         <p class="font-weight-bold mx-4 mt-3"><%= @user.birth_display %></p>
-        if 
-        <%= link_to '編集', users_information_edit_path, class: "btn border-primary rounded btn-white ml-auto text-primary mt-3" %>
+        <% if @user.id == current_user.id %>
+          <%= link_to '編集', users_information_edit_path, class: "btn border-primary rounded btn-white ml-auto text-primary my-3" %>
+        <% end %>
       </div>
-      <div class="row">
+      <div class="row my-3">
         <p><%= @user.introduction %></p>
       </div>
 

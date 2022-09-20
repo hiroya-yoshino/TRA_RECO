@@ -4,6 +4,10 @@
     <%= form_with model: @user, url: users_information_path, method: :patch do |f| %>
     <h5 class ="form-group font-weight-bold text-center">編集</h5>
     <div class="form-group">
+      <p class="text-dark mb-0 mt-4">プロフィール画像</p>
+      <%= f.file_field :profile_image, accept: "image/*" %>
+    </div>
+    <div class="form-group">
       <p class="text-dark mb-0 mt-4">ニックネーム</p>
       <%= f.text_field :name, autofocus: true, class: "form-control" %>
     </div>
@@ -19,7 +23,7 @@
 
     <div class="form-group">
       <p class="text-dark mb-0">生年月日</p>
-      <%= f.text_field :date_of_birth %>
+      <%= f.text_field :date_of_birth, class: "form-control" %>
     </div>
 
     <div class="form-group">
@@ -32,9 +36,15 @@
     　<%= f.label :sex, User.sexes_i18n[:other] %>
     </div>
 
-    <div class="form-group text-center mb-0">
-      <%= f.submit '新規登録' , class:"btn btn-primary btn-lg py-1" %>
+    <div class="row mx-auto mb-3">
+      <div class="col-3 mx-auto">
+        <%= f.submit '変更を保存', class:"btn btn-primary" %>
+      </div>
+      <div class="col-3 mx-auto">
+        <%= link_to "退会する", users_unsubscribe_path, class:"btn btn-danger text-white" %>
+      </div>
     </div>
+
     <% end %>
     </div>
   </div>
