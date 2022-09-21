@@ -37,10 +37,16 @@ class Public::PostsController < ApplicationController
     end
   end
 
+  def destroy
+    post1 = Post.find(params[:id])
+    post1.destroy
+    redirect_to user_path(current_user.id)
+  end
+
 
   private
 
   def post_params
-    params.require(:post).permit(:user_id, :title, :location, :date, :status)
+    params.require(:post).permit(:user_id, :title, :location, :date, :status, :image)
   end
 end

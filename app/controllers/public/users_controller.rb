@@ -2,6 +2,7 @@ class Public::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @posts = @user.posts
   end
 
   def edit
@@ -16,14 +17,14 @@ class Public::UsersController < ApplicationController
       render edit
     end
   end
-  
+
   def withdraw
     @user = current_user
     @user.update(is_delete: true)
     reset_session
     redirect_to root_path
   end
-  
+
   private
 
   def user_params

@@ -5,6 +5,13 @@
       <div class="row">
         <h5 class="font-weight-bold mr-auto"><%= @post.title %></h5>
       </div>
+      <div class="row mb-3">
+        <% if @post.image.present? %>
+        <%= image_tag @post.image, size: "400x220" %>
+        <% else %>
+        <%= image_tag 'no_travel_image', size: "400x220" %>
+        <% end %>
+      </div>
       <div class="row border-bottom">
         <%= image_tag @post.user.profile_image, class: "rounded-circle border", size: "50x50" %>
         <p class="font-weight-bold mx-4 mt-3"><%= @post.user.name %></p>
@@ -17,25 +24,25 @@
           <%= link_to '編集', edit_post_path(@post.id), class: "btn border-primary rounded btn-white ml-auto text-primary my-3" %>
         <% end %>
       </div>
-      <div class="row border-bottom p-4">
+      <div class="col-md-12 my-4">
         <% @post_details.each do |post_detail| %>
-        <div class="col-md-5">
-          <%#= image_tag post_detail, size: "200x200" %>
+        <div class="row">
+          <% if post_detail.image.present? %>
+          <%= image_tag post_detail.image, size: "400x220", class: "mx-auto" %>
+          <% else %>
+          <%= image_tag 'no_travel_image', size: "400x220", class: "mx-auto" %>
+          <% end %>
         </div>
-        <div class="col-md-7">
           <div class="row">
-            <h6 class="font-weight-bold mr-auto"><%= post_detail.spot_name %></h6>
+            <h6 class="font-weight-bold mx-2"><%= post_detail.spot_name %></h6>
+            <p class="mx-2"><%= post_detail.visit_time.strftime("%-H:%M") %></p>
             <% if @post.user.id == current_user.id %>
-            <%= link_to '編集', edit_post_post_detail_path(post_detail.id), class: "btn border-primary rounded btn-white ml-auto text-primary my-3" %>
+            <%= link_to '編集', edit_post_post_detail_path(@post.id,post_detail.id), class: "btn border-primary rounded btn-white ml-auto text-primary" %>
             <% end %>
           </div>
-          <div class="row">
-            <p><%= post_detail.visit_time.strftime("%-H:%-M") %></p>
+          <div class="row mx-auto border-bottom">
+            <p><%=safe_join(post_detail.impre.split("\n"),tag(:br))%></p>
           </div>
-          <div class="row">
-            <p><%= post_detail %></p>
-          </div>
-        </div>
         <% end %>
       </div>
       <% if @post.user.id == current_user.id %>
