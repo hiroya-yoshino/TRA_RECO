@@ -21,6 +21,8 @@ class Public::PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    @comments = @post.comments
+    @comment = Comment.new
     @post_details = @post.post_details
     if current_user.id == @post.user_id
       @post_detail = PostDetail.new

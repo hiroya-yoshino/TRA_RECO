@@ -17,6 +17,8 @@ Rails.application.routes.draw do
   get 'users/unsubscribe' => 'public/users#unsubscribe'
   patch 'users/withdraw' => 'public/users#withdraw'
 
+  get 'search' => 'public/homes#search'
+
   namespace :admin do
     resources :posts, only: [:new, :edit, :update, :show, :update, :destroy]
     resources :post_details
@@ -29,9 +31,9 @@ Rails.application.routes.draw do
     resources :users, only: [:show]
     resources :posts do
       resources :post_details, only: [:edit, :update, :destroy, :create]
+      resources :comments, only: [:create]
     end
     resources :reviews, only: [:index, :new, :create]
-    resources :comments, only: [:create]
     resources :follows, only: [:create, :destroy, :index]
   end
 

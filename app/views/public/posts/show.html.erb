@@ -60,4 +60,28 @@
       <% end %>
     </div>
   </div>
+  <div class="row m-5">
+    <div class="col-md-10 bg-white shadow rounded mx-auto py-3 px-5">
+      <div class="form-inline border-bottom border-primary my-3 ">
+        <%= form_with model:[@post, @comment], method: :post do |f| %>
+        <div class="form-group mb-4">
+          <%= f.text_field :detail, class: "form-control mr-5", placeholder: "コメントを書く", :size => "43*30" %>
+          <%= f.submit "送信", class:"btn btn-primary px-4" %>
+        </div>
+        <% end %>
+      </div>
+      <% @comments.each do |comment| %>
+      <div class="container border-bottom">
+      <div class="row">
+        <%= image_tag comment.user.profile_image, class: "rounded-circle border my-auto", size: "30x30" %>
+        <p class="font-weight-bold ml-4 my-auto"><%= comment.user.name %></p>
+      </div>
+      <div class="row mt-3">
+        <p class="ml-5"><%= comment.detail %></p>
+      </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+
 </div>

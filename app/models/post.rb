@@ -20,4 +20,8 @@ class Post < ApplicationRecord
   def date_display
     date.strip[0..3] + '.' + date.strip[4..5] + '.' + date.strip[6..7]
   end
+  
+  def self.search(keyword)
+    where(["title like?", "%#{keyword}%"])
+  end
 end

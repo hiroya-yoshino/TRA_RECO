@@ -1,5 +1,21 @@
 <div class="container px-5">
   <h4 class="font-weight-bold mt-5">日本のTRARECO</h4>
+
+  <div class="row m-5">
+    <div class="col-md-10 bg-white shadow rounded mx-auto py-3 px-5">
+      <div class="search-form">
+        <%= form_with url: search_path, method: :get, local: true do |f| %>
+        <div class="row my-3">
+        <%= f.text_field :keyword, value: @keyword, class: "form-control", placeholder: "検索する" %>
+        </div>
+        <div class="row my-3">
+        <%= f.submit "検索", class:"btn btn-primary mx-auto px-5" %>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
   <% @posts.each do |pos| %>
   <div class="row m-5">
     <div class="col-md-10 bg-white shadow rounded mx-auto py-3 px-5">
