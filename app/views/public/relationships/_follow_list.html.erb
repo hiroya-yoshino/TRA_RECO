@@ -1,0 +1,12 @@
+<% if users.present? %>
+  <% users.each do |user| %>
+  <div class="col-md-10 bg-white shadow rounded mx-auto py-3 px-5">
+    <%= image_tag user.profile_image, class: "rounded-circle border mr-5", size: "70x70" %>
+    <p class="font-weight-bold mx-4 mt-3"><%= user.name %></p>
+    <p class="font-weight-bold mx-4 mt-3"><%= User.sexes_i18n[user.sex] %></p>
+    <p class="font-weight-bold mx-4 mt-3"><%= user.birth_display %></p>
+  </div>
+  <% end %>
+<% else %>
+  <h4 class="mx-auto font-weight-bold mt-5">ユーザーはいません</h4>
+<% end %>

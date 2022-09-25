@@ -29,14 +29,18 @@
           <% end %>
           <% end %>
         </div>
-        <div class="col-md-7">
+        <div class="col-md-7 px-0">
           <div class="row">
             <%= link_to user_path(pos.user.id) do %>
-            <%= image_tag pos.user.profile_image, class: "rounded-circle border", size: "50x50" %>
+            <% if pos.user.profile_image.present? %>
+        　　<%= image_tag pos.user.profile_image, class: "rounded-circle border", size: "50x50" %>
+        　　<% else %>
+        　　<%= image_tag 'no-image.jpg', class: "rounded-circle border", size: "50x50" %>
+        　　<% end %>
             <% end %>
-            <p class="font-weight-bold mx-4 mt-3"><%= pos.user.name %></p>
+            <p class="font-weight-bold mt-3"><%= pos.user.name %></p>
           </div>
-          <div class="row pl-5">
+          <div class="row pl-5 ml-3">
             <%= link_to post_path(pos.id) do %>
             <h5 class="font-weight-bold text-primary ml-4"><%= pos.title %></h5>
             <% end %>

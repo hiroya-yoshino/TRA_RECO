@@ -4,12 +4,10 @@
       <%= form_with model: @post, url: post_path, method: :patch do |f| %>
         <h5 class ="form-group font-weight-bold text-center">旅編集</h5>
         <%= render 'form', f: f %>
-        <div class="row mx-auto mb-5 mt-4">
-        <div class="col-3 ml-auto mr-5 mt-5">
-    　　　　<%= f.submit "変更を保存", class:"btn btn-success mx-auto" %>
-  　　　　</div>
-  　　　　<div class="col-3 mr-auto mr-5 mt-5">
-    　　　　<%= link_to "　削除　", post_path(@post.id), method: :delete, "data-confirm" => "本当に削除しますか？", class:"btn btn-danger mx-auto" %>
+        <div class="form-inline mt-5">
+        <div class="form-group mx-auto">
+    　　　　<%= f.submit "変更を保存", class:"btn btn-success mr-3" %>
+    　　　　<%= link_to "　削除　", post_path(@post.id), method: :delete, "data-confirm" => "本当に削除しますか？", class:"btn btn-danger ml-3" %>
   　　　　</div>
   　　　　</div>
   　　　　<% end %>

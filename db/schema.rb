@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_09_18_235306) do
+ActiveRecord::Schema.define(version: 2022_09_24_092248) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -60,13 +60,6 @@ ActiveRecord::Schema.define(version: 2022_09_18_235306) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "follows", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "follow_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "post_details", force: :cascade do |t|
     t.integer "post_id"
     t.string "spot_name"
@@ -82,6 +75,13 @@ ActiveRecord::Schema.define(version: 2022_09_18_235306) do
     t.integer "location"
     t.string "date"
     t.boolean "status", default: true
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "relationships", force: :cascade do |t|
+    t.integer "follower_id"
+    t.integer "followed_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  namespace :public do
+    get 'relationships/followings'
+    get 'relationships/followers'
+  end
   root to: "public/homes#top"
   get 'about' => 'public/homes#about'
 
@@ -28,13 +32,16 @@ Rails.application.routes.draw do
   end
 
   scope module: :public do
-    resources :users, only: [:show]
+    resources :users, only: [:show] do
+      resource :relationships, only: [:create, :destroy]
+      get 'followings' => 'relationships#followings', as: 'followings'
+      get 'followers' => 'relationships#followers', as: 'followers'
+    end
     resources :posts do
       resources :post_details, only: [:edit, :update, :destroy, :create]
       resources :comments, only: [:create]
     end
     resources :reviews, only: [:index, :new, :create]
-    resources :follows, only: [:create, :destroy, :index]
   end
 
 end
