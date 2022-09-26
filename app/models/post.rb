@@ -3,7 +3,7 @@ class Post < ApplicationRecord
   has_many :post_details, dependent: :destroy
   has_many :reviews, dependent: :destroy
   has_many :comments, dependent: :destroy
-  
+
   enum location: {
     hokkaidou:1,aomoriken:2,iwateken:3,miyagiken:4,akitaken:5,yamagataken:6,fukusimaken:7,
     ibarakiken:8,totigiken:9,gunmaken:10,saitamaken:11,tibaken:12,toukyouto:13,kanagawaken:14,
@@ -14,14 +14,18 @@ class Post < ApplicationRecord
     tokusimaken:36,kagawaken:37,ehimeken:38,koutiken:39,
     fukuokaken:40,sagaken:41,nagasakiken:42,kumamotoken:43,ooitaken:44,miyazakiken:45,kagosimaken:46,okinawaken:47
   }
-  
+
   has_one_attached :image
-  
+
   def date_display
     date.strip[0..3] + '.' + date.strip[4..5] + '.' + date.strip[6..7]
   end
-  
+
   def self.search(keyword)
     where(["title like?", "%#{keyword}%"])
+  end
+
+  def self.search_place(place)
+    where(location: "#{place}")
   end
 end

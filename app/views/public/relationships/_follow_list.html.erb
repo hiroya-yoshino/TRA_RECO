@@ -1,10 +1,18 @@
 <% if users.present? %>
   <% users.each do |user| %>
   <div class="col-md-10 bg-white shadow rounded mx-auto py-3 px-5">
-    <%= image_tag user.profile_image, class: "rounded-circle border mr-5", size: "70x70" %>
-    <p class="font-weight-bold mx-4 mt-3"><%= user.name %></p>
-    <p class="font-weight-bold mx-4 mt-3"><%= User.sexes_i18n[user.sex] %></p>
-    <p class="font-weight-bold mx-4 mt-3"><%= user.birth_display %></p>
+    <div class="row mx-auto">
+      <%= link_to user_path(user.id) do %>
+      <% if user.profile_image.present? %>
+      <%= image_tag user.profile_image, class: "rounded-circle border mr-5 my-auto", size: "70x70" %>
+      <% else %>
+      <%= image_tag 'no-image.jpg', class: "rounded-circle border mr-5 my-auto", size: "70x70" %>
+      <% end %>
+      <% end %>
+      <p class="font-weight-bold mx-4 mt-3 my-auto"><%= user.name %></p>
+      <p class="font-weight-bold mx-4 mt-3 my-auto"><%= User.sexes_i18n[user.sex] %></p>
+      <p class="font-weight-bold mx-4 mt-3 my-auto"><%= user.birth_display %></p>
+    </div>
   </div>
   <% end %>
 <% else %>

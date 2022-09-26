@@ -6,7 +6,9 @@ class Public::HomesController < ApplicationController
   end
 
   def search
-    @posts = Post.search(params[:keyword]).page(params[:page]).per(10).where(status: true)
+    post_places = Post.search_place(params[:place])
+    @posts = post_places.search(params[:keyword]).page(params[:page]).per(10).where(status: true)
+    pp @posts
     @keyword = params[:keyword]
     render "top"
   end
