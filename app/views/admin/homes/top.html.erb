@@ -1,0 +1,66 @@
+<div class="container px-5">
+  <h4 class="font-weight-bold mt-5">日本のTRARECO</h4>
+
+  <div class="row m-5">
+    <div class="col-md-10 bg-white shadow rounded mx-auto py-3 px-5">
+      <div class="search-form">
+        <%= form_with url: search_path, method: :get, local: true do |f| %>
+        <div class="row my-3">
+          <div class="col-md-10">
+            <%= f.text_field :keyword, value: @keyword, class: "form-control", placeholder: "検索する" %>
+          </div>
+          <div class="col-md-2">
+            <%= f.select :place, Post.locations.keys.map {|k| [I18n.t("enums.post.location.#{k}"), k]} %>
+          </div>
+        </div>
+        <div class="row mb-3 mt-4">
+          <%= f.submit "検索", class:"btn btn-primary mx-auto px-5" %>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <% @posts.each do |pos| %>
+  <div class="row m-5">
+    <div class="col-md-10 bg-white shadow rounded mx-auto py-3 px-5">
+      <div class="row">
+        <div class="col-md-5 mt-3">
+          <%= link_to post_path(pos.id) do %>
+          <% if pos.image.present? %>
+          <%= image_tag pos.image, size: "200x110" %>
+          <% else %>
+          <%= image_tag 'no_travel_image', size: "200x110" %>
+          <% end %>
+          <% end %>
+        </div>
+        <div class="col-md-7 px-0">
+          <div class="row">
+            <%= link_to user_path(pos.user.id) do %>
+            <% if pos.user.profile_image.present? %>
+        　　<%= image_tag pos.user.profile_image, class: "rounded-circle border", size: "50x50" %>
+        　　<% else %>
+        　　<%= image_tag 'no-image.jpg', class: "rounded-circle border", size: "50x50" %>
+        　　<% end %>
+            <% end %>
+            <p class="font-weight-bold mt-3"><%= pos.user.name %></p>
+          </div>
+          <div class="row pl-5 ml-3">
+            <%= link_to post_path(pos.id) do %>
+            <h5 class="font-weight-bold text-primary ml-4"><%= pos.title %></h5>
+            <% end %>
+          </div>
+          <div class="row pl-5">
+            <p class="mx-4 mt-3">
+              <i class="fas fa-map-marker-alt"></i>
+              <%= Post.locations_i18n[pos.location] %>
+            </p>
+            <p class="mx-4 mt-3"><%= pos.date_display %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% end %>
+  <div class="mx-auto mt-5"><%= paginate @posts %></div>
+</div>

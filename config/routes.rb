@@ -1,11 +1,9 @@
 Rails.application.routes.draw do
 
-  namespace :public do
-    get 'relationships/followings'
-    get 'relationships/followers'
-  end
+
   root to: "public/homes#top"
   get 'about' => 'public/homes#about'
+  get 'admin' => 'admin/homes#top'
 
   devise_for :users,skip: [:passwords], controllers: {
     registrations: "public/registrations",
@@ -40,8 +38,13 @@ Rails.application.routes.draw do
     resources :posts do
       resources :post_details, only: [:edit, :update, :destroy, :create]
       resources :comments, only: [:create]
+      resources :reviews, only: [:index, :new, :create]
     end
-    resources :reviews, only: [:index, :new, :create]
+  end
+
+  namespace :public do
+    get 'relationships/followings'
+    get 'relationships/followers'
   end
 
 end
