@@ -19,7 +19,7 @@
         <% end %>
       </div>
       <div class="row my-3">
-        <p><%= @user.introduction %></p>
+        <p><%=safe_join(@user.introduction.split("\n"),tag(:br))%></p>
       </div>
       <div class="row">
         <%= link_to 'フォロー一覧', user_followings_path(@user.id), class: "btn border-primary rounded btn-white text-primary mr-2" %>

@@ -21,7 +21,7 @@
         <p class="font-weight-bold mx-3 mt-3"><%= User.sexes_i18n[review.user.sex] %></p>
       </div>
       <div class="row my-3">
-        <p><%= review.content %></p>
+        <p><%=safe_join(review.content.split("\n"),tag(:br))%></p>
       </div>
     </div>
   </div>

@@ -2,7 +2,7 @@
   <div class="row m-5">
     <div class="col-md-10 bg-white shadow rounded mx-auto py-5 px-5">
     <%= form_with model: @admin, url: admin_session_path, method: :post do |f| %>
-    <h5 class ="form-group font-weight-bold text-center mb-5">ログイン</h5>
+    <h5 class ="form-group font-weight-bold text-center mb-5">管理者ログイン</h5>
     <div class="form-group">
       <p class="text-dark mb-0 mt-5">メールアドレス</p>
       <%= f.email_field :email, autofocus: true, class: "form-control mb-5" %>

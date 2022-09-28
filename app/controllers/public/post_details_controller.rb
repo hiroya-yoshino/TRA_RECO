@@ -11,7 +11,7 @@ class Public::PostDetailsController < ApplicationController
   end
 
   def edit
-    @post_detail = PostDetail.find(params[:post_id])
+    @post_detail = PostDetail.find(params[:id])
   end
 
   def update

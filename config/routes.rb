@@ -20,13 +20,16 @@ Rails.application.routes.draw do
   patch 'users/withdraw' => 'public/users#withdraw'
 
   get 'search' => 'public/homes#search'
+  get 'admin/search' => 'admin/homes#search'
 
   namespace :admin do
-    resources :posts, only: [:new, :edit, :update, :show, :update, :destroy]
-    resources :post_details
+    resources :posts do
+      resources :post_details, only: [:edit, :update, :destroy]
+      resources :reviews, only: [:index, :edit, :update, :destroy]
+    end
+
     resources :users, only: [:index, :show, :edit, :update]
     resources :homes, only: [:top]
-    resources :reviews, only: [:index, :edit, :update, :destroy]
   end
 
   scope module: :public do

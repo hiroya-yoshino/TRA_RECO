@@ -26,7 +26,7 @@
     <div class="col-md-10 bg-white shadow rounded mx-auto py-3 px-5">
       <div class="row">
         <div class="col-md-5 mt-3">
-          <%= link_to post_path(pos.id) do %>
+          <%= link_to admin_post_path(pos.id) do %>
           <% if pos.image.present? %>
           <%= image_tag pos.image, size: "200x110" %>
           <% else %>
@@ -36,7 +36,7 @@
         </div>
         <div class="col-md-7 px-0">
           <div class="row">
-            <%= link_to user_path(pos.user.id) do %>
+            <%= link_to admin_user_path(pos.user.id) do %>
             <% if pos.user.profile_image.present? %>
         　　<%= image_tag pos.user.profile_image, class: "rounded-circle border", size: "50x50" %>
         　　<% else %>
@@ -46,7 +46,7 @@
             <p class="font-weight-bold mt-3"><%= pos.user.name %></p>
           </div>
           <div class="row pl-5 ml-3">
-            <%= link_to post_path(pos.id) do %>
+            <%= link_to admin_post_path(pos.id) do %>
             <h5 class="font-weight-bold text-primary ml-4"><%= pos.title %></h5>
             <% end %>
           </div>
