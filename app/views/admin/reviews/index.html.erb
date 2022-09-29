@@ -1,0 +1,28 @@
+<div class="container px-5">
+  <div class="row my-5 px-5">
+    <h4 class="font-weight-bold">レビュー一覧</h4>
+  </div>
+  <% @reviews.each do |review| %>
+  <div class="row m-5">
+    <div class="col-md-10 bg-white shadow rounded mx-auto py-3 px-5">
+      <div class="row my-3">
+        <h5 class="font-weight-bold"><%= review.title %></h5>
+        <%= link_to "削除", admin_review_path(review.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn rounded btn-danger ml-auto text-white my-3" %>
+      </div>
+      <div class="row my-3">
+        <% if review.user.profile_image.present? %>
+        <%= image_tag review.user.profile_image, class: "rounded-circle border mr-5", size: "70x70" %>
+        <% else %>
+        <%= image_tag 'no-image.jpg', class: "rounded-circle border mr-5", size: "70x70" %>
+        <% end %>
+        <p class="font-weight-bold mx-3 mt-3"><%= review.user.name %></p>
+        <p class="font-weight-bold mx-3 mt-3"><%= User.sexes_i18n[review.user.sex] %></p>
+      </div>
+      <div class="row my-3">
+        <p><%=safe_join(review.content.split("\n"),tag(:br))%></p>
+      </div>
+    </div>
+  </div>
+  <% end %>
+
+</div>

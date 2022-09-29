@@ -25,9 +25,8 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :posts do
       resources :post_details, only: [:edit, :update, :destroy]
-      resources :reviews, only: [:index, :edit, :update, :destroy]
     end
-
+    resources :reviews, only: [:index, :destroy]
     resources :users, only: [:index, :show, :edit, :update]
     resources :homes, only: [:top]
   end
