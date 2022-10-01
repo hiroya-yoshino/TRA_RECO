@@ -1,5 +1,5 @@
 class Public::PostsController < ApplicationController
-
+  before_action :authenticate_user!, except: [:show]
 
   def new
     @post = Post.new
@@ -24,7 +24,7 @@ class Public::PostsController < ApplicationController
     @comments = @post.comments
     @comment = Comment.new
     @post_details = @post.post_details
-    if current_user.id == @post.user_id
+    if current_user&.id == @post.user_id
       @post_detail = PostDetail.new
       @post_detail.post_id = @post.id
     end

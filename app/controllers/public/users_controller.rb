@@ -1,4 +1,5 @@
 class Public::UsersController < ApplicationController
+  before_action :authenticate_user!, except: [:show]
 
   def show
     @user = User.find(params[:id])
@@ -14,7 +15,7 @@ class Public::UsersController < ApplicationController
     if @user.update(user_params)
       redirect_to user_path(@user.id)
     else
-      render edit
+      render :edit
     end
   end
 
@@ -23,6 +24,12 @@ class Public::UsersController < ApplicationController
     @user.update(is_delete: true)
     reset_session
     redirect_to root_path
+  end
+  
+  def new_guest
+    user = User.guest
+    sign_in user
+    redirect_to root_path, notice: 'ゲストユーザーとしてログインしました。'
   end
 
   private

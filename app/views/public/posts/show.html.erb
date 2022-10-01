@@ -4,7 +4,7 @@
     <div class="col-md-10 bg-white shadow rounded mx-auto py-3 px-5">
       <div class="row mb-3">
         <h5 class="font-weight-bold mr-auto"><%= @post.title %></h5>
-        <% if current_user.id == @post.user.id %>
+        <% if current_user&.id == @post.user.id %>
           <% if @post.status? %>
           <h5 class="font-weight-bold text-success border-success ml-auto">公開</h5>
           <% else %>
@@ -33,7 +33,7 @@
           <%= Post.locations_i18n[@post.location] %>
         </p>
         <p class="mx-4 mt-3"><%= @post.date_display %></p>
-        <% if @post.user.id == current_user.id %>
+        <% if @post.user.id == current_user&.id %>
           <%= link_to '編集', edit_post_path(@post.id), class: "btn border-primary rounded btn-white ml-auto text-primary my-3" %>
         <% end %>
       </div>
@@ -49,7 +49,7 @@
           <div class="row">
             <h6 class="font-weight-bold mx-2"><%= post_detail.spot_name %></h6>
             <p class="mx-2"><%= post_detail.visit_time.strftime("%-H:%M") %></p>
-            <% if @post.user.id == current_user.id %>
+            <% if @post.user.id == current_user&.id %>
             <%= link_to '編集', edit_post_post_detail_path(@post.id,post_detail.id), class: "btn border-primary rounded btn-white ml-auto text-primary" %>
             <% end %>
           </div>
@@ -58,7 +58,7 @@
           </div>
         <% end %>
       </div>
-      <% if @post.user.id == current_user.id %>
+      <% if @post.user.id == current_user&.id %>
       <div class="row mt-3">
         <div class="col-md-11 mx-auto">
           <%= form_with model: [@post, @post_detail], method: :post do |f| %>

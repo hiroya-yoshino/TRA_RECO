@@ -1,5 +1,5 @@
 class Admin::PostDetailsController < ApplicationController
-
+  before_action :authenticate_admin!
 
   def edit
     @post_detail = PostDetail.find(params[:id])

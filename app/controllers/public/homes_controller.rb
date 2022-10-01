@@ -1,6 +1,5 @@
 class Public::HomesController < ApplicationController
 
-
   def top
     @posts = Post.page(params[:page]).per(10).where(status: true)
   end
