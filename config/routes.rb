@@ -36,7 +36,7 @@ Rails.application.routes.draw do
       resource :relationships, only: [:create, :destroy]
       get 'followings' => 'relationships#followings', as: 'followings'
       get 'followers' => 'relationships#followers', as: 'followers'
-      post 'guest_sign_in', to: 'sessions#new_guest'
+      post 'guest_sign_in' => 'users#new_guest'
     end
     resources :posts do
       resources :post_details, only: [:edit, :update, :destroy, :create]

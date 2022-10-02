@@ -3,14 +3,19 @@
     <div class="col-md-10 bg-white shadow rounded mx-auto py-3 px-5">
       <%= form_with model: @post, url: post_path, method: :patch do |f| %>
         <h5 class ="form-group font-weight-bold text-center">旅編集</h5>
-        <%= render 'form', f: f %>
-        <div class="form-inline mt-5">
+      <%= render 'form', f: f %>
+      <div class="form-inline mt-5">
         <div class="form-group mx-auto">
     　　　　<%= f.submit "変更を保存", class:"btn btn-success mr-3" %>
     　　　　<%= link_to "　削除　", post_path(@post.id), method: :delete, "data-confirm" => "本当に削除しますか？", class:"btn btn-danger ml-3" %>
   　　　　</div>
-  　　　　</div>
-  　　　　<% end %>
-      </div>
+  　　　</div>
+  　　　<% end %>
     </div>
   </div>
+  <div class="row my-5 px-5">
+    <%= link_to :back, class: "text-primary" do %>
+    <i class="fas fa-arrow-circle-left fa-2x" style="color: primary"></i>
+    <% end %>
+  </div>
+</div>

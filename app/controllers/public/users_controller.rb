@@ -26,6 +26,7 @@ class Public::UsersController < ApplicationController
     redirect_to root_path
   end
   
+  
   def new_guest
     user = User.guest
     sign_in user
