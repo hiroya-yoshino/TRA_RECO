@@ -1,2 +1,28 @@
 @import '~bootstrap/scss/bootstrap';
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
+
+@media screen and (max-width: 1000px) {
+    .post_image {
+      width: 200px !important;
+      height: 100px !important;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .post_image {
+      width: 200px !important;
+      height: auto !important;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .post_image {
+      width: 200px !important;
+      height: auto !important;
+    }
+}
+
+// .post_image{
+//   width: 400px;
+//   height: auto;
+// }

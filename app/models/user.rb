@@ -44,13 +44,13 @@ class User < ApplicationRecord
   def following?(user)
     followings.include?(user)
   end
-  
+
   def self.guest
-    find_or_create_by!(email: 'aaa@aaa.com') do |user|
+    find_or_create_by(email: 'guest@example.com') do |user|
       user.password = SecureRandom.urlsafe_base64
-      user.password_confirmation = user.password
-      user.name = 'ゲスト'
-      user.date_of_birth = 20000101
+      user.name = 'ゲスト（閲覧用）'
+      user.date_of_birth = 00000000
+      user.sex = User.sexes.key(2)
     end
   end
 

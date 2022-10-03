@@ -4,6 +4,7 @@
     <div class="col-md-10 bg-white shadow rounded mx-auto py-3 px-5">
       <div class="row mb-3">
         <h5 class="font-weight-bold mr-auto"><%= @post.title %></h5>
+        <% if  current_user.email != 'guest@example.com' %>
         <% if current_user&.id == @post.user.id %>
           <% if @post.status? %>
           <h5 class="font-weight-bold text-success border-success ml-auto">公開</h5>
@@ -12,6 +13,7 @@
           <% end %>
         <% else %>
         <%= link_to 'レビュー', post_reviews_path(@post.id), class: "btn rounded btn-success ml-auto text-white" %>
+        <% end %>
         <% end %>
       </div>
       <div class="row mb-3">
@@ -41,7 +43,7 @@
         <% @post_details.each do |post_detail| %>
         <div class="row">
           <% if post_detail.image.present? %>
-          <%= image_tag post_detail.image, size: "400x220", class: "mx-auto" %>
+          <%= image_tag post_detail.image, class: "mx-auto post_image" %>
           <% else %>
           <%= image_tag 'no_travel_image', size: "400x220", class: "mx-auto" %>
           <% end %>
@@ -79,7 +81,7 @@
         <%= form_with model:[@post, @comment], method: :post do |f| %>
         <div class="form-group mb-4">
           <%= f.text_field :detail, class: "form-control mr-5", placeholder: "コメントを書く", :size => "43*30" %>
-          <%= f.submit "送信", class:"btn btn-primary px-4" %>
+          <%= f.submit "送信", class:"btn btn-primary px-4 mr-auto" %>
         </div>
         <% end %>
       </div>

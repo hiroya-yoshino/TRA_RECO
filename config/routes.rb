@@ -7,7 +7,8 @@ Rails.application.routes.draw do
 
   devise_for :users,skip: [:passwords], controllers: {
     registrations: "public/registrations",
-    sessions: 'public/sessions'
+    sessions: 'public/sessions',
+    passwords: 'public/passwords'
   }
 
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
@@ -21,6 +22,12 @@ Rails.application.routes.draw do
 
   get 'search' => 'public/homes#search'
   get 'admin/search' => 'admin/homes#search'
+
+
+
+  devise_scope :user do
+    post '/users/guest_sign_in' => 'public/sessions#new_guest'
+  end
 
   namespace :admin do
     resources :posts do
@@ -36,7 +43,6 @@ Rails.application.routes.draw do
       resource :relationships, only: [:create, :destroy]
       get 'followings' => 'relationships#followings', as: 'followings'
       get 'followers' => 'relationships#followers', as: 'followers'
-      post 'guest_sign_in' => 'users#new_guest'
     end
     resources :posts do
       resources :post_details, only: [:edit, :update, :destroy, :create]
