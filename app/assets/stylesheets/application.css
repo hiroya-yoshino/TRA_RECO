@@ -13,41 +13,45 @@
  *= require_tree .
  *= require_self
  */
+/*  .post_image {*/
+/*    width: 100% !important;*/
+/*    height: auto !important;*/
+/*  }*/
 
-.post_image {
-    width: 400px !important;
-    height: auto !important;
-  }
+/*@media screen and (max-width: 425px) {*/
+/*    .post_image {*/
+/*     width: 100% !important;*/
+/*     height: auto !important;*/
+/*     margin: auto !important;*/
+/*    }*/
 
-@media screen and (max-width: 1000px) {
-  .post_image {
-    width: 400px !important;
-    height: auto !important;
-  }
+/*    .row-main{*/
+     /*width: 100% !important;*/
+     /*text-align: center !important;*/
+/*     width: 100% !important;*/
 
-}
+/*    }*/
+/*}*/
 
-@media screen and (max-width: 600px) {
-    .post_image {
-      width: 400px !important;
-      height: auto !important;
-    }
-}
+/*@media screen and (max-width: 768px) {*/
+/*    .post_image {*/
+/*      width: 100% !important;*/
+/*      height: auto !important;*/
+/*    }*/
+/*}*/
 
-@media screen and (max-width: 400px) {
-    .post_image {
-      width: 50px !important;
-      height: auto !important;
-    }
+/*@media screen and (max-width: 1024px) {*/
+/*  .post_image {*/
+/*    width: 100% !important;*/
+/*    height: auto !important;*/
+/*  }*/
+/*}*/
 
-    .container{
-      /*margin!-right: 1px important;*/
-    }
-}
 
-@media screen and (max-width: 200px) {
-    .post_image {
-      width: 50px !important;
-      height: auto !important;
-    }
-}
+
+/*@media screen and (max-width: 200px) {*/
+/*    .post_image {*/
+/*      width: 50px !important;*/
+/*      height: auto !important;*/
+/*    }*/
+/*}*/

@@ -1,15 +1,15 @@
 <div class="container px-5">
-  <div class="row m-5">
-    <div class="col-md-10 bg-white shadow rounded mx-auto py-3 px-5">
+  <div class="row my-5">
+    <div class="col-md-10 col-sm-12 bg-white shadow rounded mx-auto py-3 px-5">
       <div class="row">
         <% if @user.profile_image.present? %>
-        <%= image_tag @user.profile_image, class: "rounded-circle border mr-5", size: "60x60" %>
+        <%= image_tag @user.profile_image, class: "rounded-circle border mr-3 profile_image" %>
         <% else %>
-        <%= image_tag 'no-image.jpg', class: "rounded-circle border mr-5", size: "60x60" %>
+        <%= image_tag 'no-image.jpg', class: "rounded-circle border mr-3 profile_image" %>
         <% end %>
-        <p class="font-weight-bold mx-3 mt-3"><%= @user.name %></p>
-        <p class="font-weight-bold mx-3 mt-3"><%= User.sexes_i18n[@user.sex] %></p>
-        <p class="font-weight-bold mx-3 mt-3"><%= @user.birth_display %></p>
+        <p class="font-weight-bold mx-2 mt-3 prof-font"><%= @user.name %></p>
+        <p class="font-weight-bold mx-2 mt-3 prof-font"><%= User.sexes_i18n[@user.sex] %></p>
+        <p class="font-weight-bold mx-2 mt-3 prof-font"><%= @user.birth_display %></p>
         <% if  current_user.email != 'guest@example.com' %>
         <% if @user.id == current_user.id %>
           <%= link_to '編集', users_information_edit_path, class: "btn border-primary rounded btn-white ml-auto text-primary mt-2 mb-3" %>
@@ -20,38 +20,38 @@
         <% end %>
         <% end %>
       </div>
-      <div class="row my-3">
+      <div class="row mt-3">
         <% if @user.introduction? %>
         <p><%=safe_join(@user.introduction.split("\n"),tag(:br))%></p>
         <% end %>
       </div>
       <div class="row">
         <% if  current_user.email != 'guest@example.com' %>
-        <%= link_to 'フォロー一覧', user_followings_path(@user.id), class: "btn border-primary rounded btn-white text-primary mr-2" %>
-        <%= link_to 'フォロワー一覧', user_followers_path(@user.id), class: "btn border-primary rounded btn-white text-primary ml-2" %>
+        <%= link_to 'フォロー', user_followings_path(@user.id), class: "btn border-primary rounded btn-white text-primary mr-4 mt-3" %>
+        <%= link_to 'フォロワー', user_followers_path(@user.id), class: "btn border-primary rounded btn-white text-primary mt-3" %>
         <% end %>
       </div>
     </div>
-    <div class="col-md-10 mt-5 mx-auto">
-      <h3 class="font-weight-bold text-center">投稿一覧</h3>
+    <div class="col-md-10 col-sm-12 mt-5 mx-auto">
+      <h3 class="font-weight-bold text-center mb-3">投稿一覧</h3>
       <div class="row">
         <% @posts.each do |pos| %>
-        <div class="col-md-6">
+        <div class="col-md-6 pr-5 my-3">
           <div class="row">
-            <div class="col-md-6 my-auto">
+            <div class="post_my_page my-auto">
               <%= link_to post_path(pos.id) do %>
               <% if pos.image.present? %>
-              <%= image_tag pos.image, size: "120x66" %>
+              <%= image_tag pos.image, class: "my_post_image" %>
               <% else %>
-              <%= image_tag 'no_travel_image', size: "120x66" %>
+              <%= image_tag 'no_travel_image', class: "my_post_image" %>
               <% end %>
               <% end %>
             </div>
-            <div class="col-md-6">
+            <div class="post_my_page my-auto">
               <%= link_to post_path(pos.id) do %>
-              <p class="font-weight-bold mt-3 text-dark"><%= pos.title %></p>
+              <h6 class="font-weight-bold mt-3 text-dark"><%= pos.title %></h6>
               <% end %>
-              <p class="mt-3"><%= pos.date_display %></p>
+              <h6 class="mt-3"><%= pos.date_display %></h6>
             </div>
           </div>
         </div>

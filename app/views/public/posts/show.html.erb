@@ -1,7 +1,7 @@
-<div class="container px-5">
+<div class="container">
   <h4 class="font-weight-bold text-center mt-5">旅の詳細</h4>
-  <div class="row m-5">
-    <div class="col-md-10 bg-white shadow rounded mx-auto py-3 px-5">
+  <div class="row mx-auto">
+    <div class="col-md-10 col-sm-12 bg-white shadow rounded mx-auto py-3 px-5">
       <div class="row mb-3">
         <h5 class="font-weight-bold mr-auto"><%= @post.title %></h5>
         <% if  current_user.email != 'guest@example.com' %>
@@ -18,9 +18,9 @@
       </div>
       <div class="row mb-3">
         <% if @post.image.present? %>
-        <%= image_tag @post.image, size: "400x220" %>
+        <%= image_tag @post.image, class: "post_show_image" %>
         <% else %>
-        <%= image_tag 'no_travel_image', size: "400x220" %>
+        <%= image_tag 'no_travel_image', class: "post_show_image" %>
         <% end %>
       </div>
       <div class="row border-bottom">
@@ -43,9 +43,9 @@
         <% @post_details.each do |post_detail| %>
         <div class="row">
           <% if post_detail.image.present? %>
-          <%= image_tag post_detail.image, class: "mx-auto post_image" %>
+          <%= image_tag post_detail.image, class: "mx-auto post_show_image" %>
           <% else %>
-          <%= image_tag 'no_travel_image', size: "400x220", class: "mx-auto" %>
+          <%= image_tag 'no_travel_image', class: "mx-auto post_show_image" %>
           <% end %>
         </div>
           <div class="row">
@@ -75,12 +75,12 @@
       <% end %>
     </div>
   </div>
-  <div class="row m-5">
-    <div class="col-md-10 bg-white shadow rounded mx-auto py-3 px-5">
+  <div class="row my-5 mx-auto">
+    <div class="col-md-10 col-sm-12 bg-white shadow rounded mx-auto py-3 px-5">
       <div class="form-inline border-bottom border-primary my-3 ">
         <%= form_with model:[@post, @comment], method: :post do |f| %>
         <div class="form-group mb-4">
-          <%= f.text_field :detail, class: "form-control mr-5", placeholder: "コメントを書く", :size => "43*30" %>
+          <%= f.text_field :detail, class: "form-control mr-5 comment-form", placeholder: "コメントを書く", :size => "43*30" %>
           <%= f.submit "送信", class:"btn btn-primary px-4 mr-auto" %>
         </div>
         <% end %>

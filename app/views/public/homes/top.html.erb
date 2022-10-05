@@ -1,7 +1,7 @@
 <div class="container px-5">
   <h4 class="font-weight-bold mt-5">日本のTRARECO</h4>
 
-  <div class="row m-5">
+  <div class="row my-5">
     <div class="col-md-10 bg-white shadow rounded mx-auto py-3 px-5">
       <div class="search-form">
         <%= form_with url: search_path, method: :get, local: true do |f| %>
@@ -22,15 +22,15 @@
   </div>
 
   <% @posts.each do |pos| %>
-  <div class="row m-5">
-    <div class="col-md-10 bg-white shadow rounded mx-auto py-3 px-5">
+  <div class="row my-5">
+    <div class="col-md-10 col-sm-12 bg-white shadow rounded mx-auto py-3 px-5">
       <div class="row">
-        <div class="col-md-5 mt-3">
+        <div class="col-md-5 my-auto">
           <%= link_to post_path(pos.id) do %>
           <% if pos.image.present? %>
-          <%= image_tag pos.image, size: "200x110" %>
+          <%= image_tag pos.image, class: "post_image" %>
           <% else %>
-          <%= image_tag 'no_travel_image', size: "200x110" %>
+          <%= image_tag 'no_travel_image', class: "post_image" %>
           <% end %>
           <% end %>
         </div>
