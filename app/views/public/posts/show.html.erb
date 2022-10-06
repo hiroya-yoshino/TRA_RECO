@@ -49,11 +49,17 @@
           <% end %>
         </div>
           <div class="row">
-            <h6 class="font-weight-bold mx-2"><%= post_detail.spot_name %></h6>
-            <p class="mx-2"><%= post_detail.visit_time.strftime("%-H:%M") %></p>
+            <h5 class="font-weight-bold"><%= post_detail.spot_name %></h5>
+          </div>
+          <div class="row">
+            <div class="col-2 px-0">
+            <h5 class="my-auto"><%= post_detail.visit_time.strftime("%-m/%-d %-H:%M") %></h5>
+            </div>
+            <div class="col-10 px-0 text-right">
             <% if @post.user.id == current_user&.id %>
             <%= link_to '編集', edit_post_post_detail_path(@post.id,post_detail.id), class: "btn border-primary rounded btn-white ml-auto text-primary" %>
             <% end %>
+            </div>
           </div>
           <div class="row mx-auto border-bottom">
             <p><%=safe_join(post_detail.impre.split("\n"),tag(:br))%></p>
@@ -77,11 +83,17 @@
   </div>
   <div class="row my-5 mx-auto">
     <div class="col-md-10 col-sm-12 bg-white shadow rounded mx-auto py-3 px-5">
-      <div class="form-inline border-bottom border-primary my-3 ">
+      <div class="border-bottom border-primary my-3">
         <%= form_with model:[@post, @comment], method: :post do |f| %>
         <div class="form-group mb-4">
-          <%= f.text_field :detail, class: "form-control mr-5 comment-form", placeholder: "コメントを書く", :size => "43*30" %>
-          <%= f.submit "送信", class:"btn btn-primary px-4 mr-auto" %>
+          <div class="row">
+            <div class="col-10 pl-0">
+          <%= f.text_field :detail, class: "form-control mr-5 comment-form", placeholder: "コメントを書く" %>
+          </div>
+          <div class="col-2 pl-0">
+          <%= f.submit "送信", class:"btn btn-primary px-4 mr-auto comment-submit" %>
+          </div>
+          </div>
         </div>
         <% end %>
       </div>

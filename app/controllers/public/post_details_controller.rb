@@ -25,7 +25,7 @@ class Public::PostDetailsController < ApplicationController
 
   def destroy
     post_detail = PostDetail.find(params[:id])
-    @post = Post.find(params[:id])
+    @post = Post.find(params[:post_id])
     post_detail.destroy
     redirect_to post_path(@post.id)
   end

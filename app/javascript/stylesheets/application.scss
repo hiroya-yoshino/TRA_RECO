@@ -6,7 +6,7 @@ body, html { font-size: 30px; }
 @media screen and (min-width: 0px) {
     .post_image {
       width: 80%;
-      height: auto;
+      height: 170px;
     }
 
     .post_show_image {
@@ -32,18 +32,14 @@ body, html { font-size: 30px; }
       height: 35px;
     }
 
-    .comment-form{
-      width: 80%;
-      height: 30px;
-    }
-
     body, html { font-size: 10px; }
 }
 
 @media screen and (min-width: 425px) {
     .post_image {
       width: 85%;
-      height: auto;
+      height: 200px;
+      object-fit: cover;
     }
 
     .post_show_image {
@@ -73,7 +69,7 @@ body, html { font-size: 30px; }
 @media screen and (min-width: 768px) {
     .post_image {
       width: 90%;
-      height: 140px;
+      height: 100px;
       object-fit: cover;
     }
 
