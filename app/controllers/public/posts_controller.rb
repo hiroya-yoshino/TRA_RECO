@@ -23,7 +23,7 @@ class Public::PostsController < ApplicationController
     @post = Post.find(params[:id])
     @comments = @post.comments
     @comment = Comment.new
-    @post_details = @post.post_details
+    @post_details = @post.post_details.order(visit_time: :ASC)
     if current_user&.id == @post.user_id
       @post_detail = PostDetail.new
       @post_detail.post_id = @post.id
