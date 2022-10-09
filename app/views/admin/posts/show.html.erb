@@ -1,7 +1,7 @@
 <div class="container px-5">
   <h4 class="font-weight-bold text-center mt-5">旅の詳細</h4>
   <div class="row m-5">
-    <div class="col-md-10 bg-white shadow rounded mx-auto py-3 px-5">
+    <div class="col-md-10 col-sm-12 bg-white shadow rounded mx-auto py-3 px-5">
       <div class="row mb-3">
         <h5 class="font-weight-bold mr-auto"><%= @post.title %></h5>
           <% if @post.status? %>
@@ -13,38 +13,44 @@
       </div>
       <div class="row mb-3">
         <% if @post.image.present? %>
-        <%= image_tag @post.image, size: "400x220" %>
+        <%= image_tag @post.image, class: "post_show_image" %>
         <% else %>
-        <%= image_tag 'no_travel_image', size: "400x220" %>
+        <%= image_tag 'no_travel_image', class: "post_show_image" %>
         <% end %>
       </div>
       <div class="row border-bottom">
         <% if @post.user.profile_image.present? %>
-        <%= image_tag @post.user.profile_image, class: "rounded-circle border", size: "50x50" %>
+        <%= image_tag @post.user.profile_image, class: "rounded-circle border profile_image" %>
         <% else %>
-        <%= image_tag 'no-image.jpg', class: "rounded-circle border", size: "50x50" %>
+        <%= image_tag 'no-image.jpg', class: "rounded-circle border profile_image" %>
         <% end %>
-        <p class="font-weight-bold mx-4 mt-3"><%= @post.user.name %></p>
-        <p class="mx-4 mt-3">
+        <p class="font-weight-bold mx-4 mb-0 d-flex align-items-center"><%= @post.user.name %></p>
+        <p class="mx-4 mb-0 d-flex align-items-center">
           <i class="fas fa-map-marker-alt"></i>
           <%= Post.locations_i18n[@post.location] %>
         </p>
-        <p class="mx-4 mt-3"><%= @post.date_display %></p>
-        <%= link_to '編集', edit_admin_post_path(@post.id), class: "btn border-primary rounded btn-white ml-auto text-primary my-3" %>
+        <p class="mx-4 mb-0 d-flex align-items-center"><%= @post.date_display %></p>
+        <%= link_to '編集', edit_admin_post_path(@post.id), class: "btn border-primary rounded btn-white ml-auto text-primary d-flex align-items-center my-auto" %>
       </div>
       <div class="col-md-12 my-4">
         <% @post_details.each do |post_detail| %>
         <div class="row">
           <% if post_detail.image.present? %>
-          <%= image_tag post_detail.image, size: "400x220", class: "mx-auto" %>
+          <%= image_tag post_detail.image, class: "mx-auto post_show_image" %>
           <% else %>
-          <%= image_tag 'no_travel_image', size: "400x220", class: "mx-auto" %>
+          <%= image_tag 'no_travel_image', class: "mx-auto post_show_image" %>
           <% end %>
         </div>
           <div class="row">
-            <h6 class="font-weight-bold mx-2"><%= post_detail.spot_name %></h6>
-            <p class="mx-2"><%= post_detail.visit_time.strftime("%-H:%M") %></p>
-            <%= link_to '編集', edit_admin_post_post_detail_path(@post.id,post_detail.id), class: "btn border-primary rounded btn-white ml-auto text-primary" %>
+            <h6 class="font-weight-bold"><%= post_detail.spot_name %></h6>
+          </div>
+          <div class="row">
+            <div class="col-4 px-0 d-flex align-items-center">
+              <h5 class="mb-0"><%= post_detail.visit_time.strftime("%-m/%-d %-H:%M") %></h5>
+            </div>
+            <div class="col-8 px-0 text-right">
+              <%= link_to '編集', edit_admin_post_post_detail_path(@post.id,post_detail.id), class: "btn border-primary rounded btn-white ml-auto text-primary" %>
+            </div>
           </div>
           <div class="row mx-auto border-bottom">
             <p><%=safe_join(post_detail.impre.split("\n"),tag(:br))%></p>
@@ -67,5 +73,10 @@
       </div>
       <% end %>
     </div>
+  </div>
+  <div class="row my-5 px-5">
+    <%= link_to :back, class: "text-primary" do %>
+    <i class="fas fa-arrow-circle-left fa-2x" style="color: primary"></i>
+    <% end %>
   </div>
 </div>

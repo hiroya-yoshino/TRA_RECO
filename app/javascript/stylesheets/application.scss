@@ -1,11 +1,25 @@
 @import '~bootstrap/scss/bootstrap';
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
+@import url('https://fonts.googleapis.com/css2?family=Yusei+Magic&display=swap');
 
 body, html { font-size: 30px; }
 
+.nihon{
+  font-family: 'Yusei Magic', sans-serif;
+}
 
+.trareco-color{
+  background-color: #4689FF;
+}
 
 @media screen and (min-width: 0px) {
+  .main-head {
+    width: 100%;
+    height: 200px;
+    background: url('../images/top-image.jpg') no-repeat center center;
+    background-size: cover;
+  }
+
     .post_image {
       width: 80%;
       height: 170px;
@@ -38,6 +52,12 @@ body, html { font-size: 30px; }
 }
 
 @media screen and (min-width: 425px) {
+  .main-head {
+    width: 100%;
+    height: 200px;
+    background: url('../images/top-image.jpg') no-repeat center center;
+    background-size: cover;
+  }
     .post_image {
       width: 85%;
       height: 200px;
@@ -69,6 +89,13 @@ body, html { font-size: 30px; }
 }
 
 @media screen and (min-width: 768px) {
+  .main-head {
+    width: 100%;
+    height: 220px;
+    background: url('../images/top-image.jpg') no-repeat center center;
+    background-size: cover;
+  }
+
     .post_image {
       width: 90%;
       height: 100px;
@@ -104,10 +131,12 @@ body, html { font-size: 30px; }
 @media screen and (min-width: 1024px) {
   .main-head {
     width: 100%;
-    height: 300px;
+    height: 250px;
     background: url('../images/top-image.jpg') no-repeat center center;
     background-size: cover;
   }
+
+
 
     .post_image {
       width: 100%;

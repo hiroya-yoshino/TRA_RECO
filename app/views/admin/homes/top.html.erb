@@ -23,14 +23,14 @@
 
   <% @posts.each do |pos| %>
   <div class="row m-5">
-    <div class="col-md-10 bg-white shadow rounded mx-auto py-3 px-5">
+    <div class="col-md-10 col-sm-12 bg-white shadow rounded mx-auto py-3 px-5">
       <div class="row">
-        <div class="col-md-5 mt-3">
+        <div class="col-md-5 my-auto text-center">
           <%= link_to admin_post_path(pos.id) do %>
           <% if pos.image.present? %>
-          <%= image_tag pos.image, size: "200x110" %>
+          <%= image_tag pos.image, class: "post_image" %>
           <% else %>
-          <%= image_tag 'no_travel_image', size: "200x110" %>
+          <%= image_tag 'no_travel_image', class: "post_image" %>
           <% end %>
           <% end %>
         </div>
@@ -38,9 +38,9 @@
           <div class="row">
             <%= link_to admin_user_path(pos.user.id) do %>
             <% if pos.user.profile_image.present? %>
-        　　<%= image_tag pos.user.profile_image, class: "rounded-circle border", size: "50x50" %>
+        　　<%= image_tag pos.user.profile_image, class: "rounded-circle border", size: "30x30" %>
         　　<% else %>
-        　　<%= image_tag 'no-image.jpg', class: "rounded-circle border", size: "50x50" %>
+        　　<%= image_tag 'no-image.jpg', class: "rounded-circle border", size: "30x30" %>
         　　<% end %>
             <% end %>
             <p class="font-weight-bold mt-3"><%= pos.user.name %></p>

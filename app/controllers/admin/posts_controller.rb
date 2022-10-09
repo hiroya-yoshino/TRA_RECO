@@ -8,7 +8,7 @@ class Admin::PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @comments = @post.comments
-    @post_details = @post.post_details
+    @post_details = @post.post_details.order(visit_time: :ASC)
   end
 
   def update
