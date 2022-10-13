@@ -4,13 +4,13 @@
   <div class="row m-5">
     <div class="col-md-10 bg-white shadow rounded mx-auto py-3 px-5">
       <div class="search-form">
-        <%= form_with url: search_path, method: :get, local: true do |f| %>
+        <%= form_with url: admin_search_path, method: :get, local: true do |f| %>
         <div class="row my-3">
           <div class="col-md-10">
             <%= f.text_field :keyword, value: @keyword, class: "form-control", placeholder: "検索する" %>
           </div>
           <div class="col-md-2">
-            <%= f.select :place, Post.locations.keys.map {|k| [I18n.t("enums.post.location.#{k}"), k]} %>
+            <%= f.select :place, Post.locations.keys.map {|k| [I18n.t("enums.post.location.#{k}"), k]}, include_blank: "全て" %>
           </div>
         </div>
         <div class="row mb-3 mt-4">
@@ -44,6 +44,11 @@
         　　<% end %>
             <% end %>
             <p class="font-weight-bold mt-3"><%= pos.user.name %></p>
+            <% if pos.status? %>
+              <h5 class="font-weight-bold text-success border-success ml-auto">公開</h5>
+            <% else %>
+              <h5 class="font-weight-bold text-danger border-danger ml-auto">非公開</h5>
+            <% end %>
           </div>
           <div class="row pl-5 ml-3">
             <%= link_to admin_post_path(pos.id) do %>

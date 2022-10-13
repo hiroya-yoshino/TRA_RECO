@@ -1,10 +1,10 @@
 <div class="container px-5">
-  <div class="row m-5">
-    <div class="col-md-10 mt-5 mx-auto">
-      <h3 class="font-weight-bold text-center">フォロー一覧</h3>
-    </div>
-    <%= render 'follow_list', users: @users %>
+  <div class="row my-5 px-5">
+    <h4 class="font-weight-bold">レビュー一覧</h4>
   </div>
+  <% @reviews.each do |review| %>
+  <%= render 'review_list', review: review %>
+  <% end %>
   <div class="row my-5 px-5">
     <%= link_to :back, class: "text-primary" do %>
     <i class="fas fa-arrow-circle-left fa-2x" style="color: primary"></i>

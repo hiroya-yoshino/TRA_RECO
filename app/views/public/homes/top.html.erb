@@ -10,7 +10,7 @@
             <%= f.text_field :keyword, value: @keyword, class: "form-control", placeholder: "検索する" %>
           </div>
           <div class="col-md-2 form-select">
-            <%= f.select :place, Post.locations.keys.map {|k| [I18n.t("enums.post.location.#{k}"), k]}, include_blank: true %>
+            <%= f.select :place, Post.locations.keys.map {|k| [I18n.t("enums.post.location.#{k}"), k]}, include_blank: "全て" %>
           </div>
         </div>
         <div class="row mb-3 mt-4">

@@ -19,6 +19,11 @@ class Public::ReviewsController < ApplicationController
     @post = Post.find(params[:post_id])
     @reviews = @post.reviews
   end
+  
+  def show
+    @post = Post.find(params[:id])
+    @reviews = @post.reviews
+  end
 
   private
 

@@ -10,6 +10,11 @@
         <p class="font-weight-bold mx-3 mt-3"><%= @user.name %></p>
         <p class="font-weight-bold mx-3 mt-3"><%= User.sexes_i18n[@user.sex] %></p>
         <p class="font-weight-bold mx-3 mt-3"><%= @user.birth_display %></p>
+        <% if @user.is_delete %>
+        <h5 class="font-weight-bold ml-auto text-danger my-3">退会</h5>
+        <% else %>
+        <h5 class="font-weight-bold ml-auto text-success my-3">有効</h5>
+        <% end %>
         <%= link_to '編集', edit_admin_user_path(@user.id), class: "btn border-primary rounded btn-white ml-auto text-primary my-3" %>
       </div>
       <div class="row my-3">

@@ -12,7 +12,7 @@
           <h5 class="font-weight-bold text-danger border-danger ml-auto">非公開</h5>
           <% end %>
         <% else %>
-        <%= link_to 'レビュー', post_reviews_path(@post.id), class: "btn rounded btn-success ml-auto text-white" %>
+        <%= link_to 'レビュー', post_review_path(@post.id), method: :get, class: "btn rounded btn-success ml-auto text-white" %>
         <% end %>
         <% end %>
       </div>
@@ -24,10 +24,12 @@
         <% end %>
       </div>
       <div class="row border-bottom pb-3">
+        <%= link_to user_path(@post.user.id), class: "px-0" do %>
         <% if @post.user.profile_image.present? %>
         <%= image_tag @post.user.profile_image, class: "rounded-circle border profile_image" %>
         <% else %>
         <%= image_tag 'no-image.jpg', class: "rounded-circle border profile_image" %>
+        <% end %>
         <% end %>
         <p class="font-weight-bold mx-4 mb-0 d-flex align-items-center"><%= @post.user.name %></p>
         <p class="mx-4 mb-0 d-flex align-items-center">
@@ -83,6 +85,7 @@
   </div>
   <div class="row my-5 mx-auto">
     <div class="col-md-10 col-sm-12 bg-white shadow rounded mx-auto py-3 px-5">
+      <% if  current_user.email != 'guest@example.com' %>
       <div class="border-bottom border-primary my-3">
         <%= form_with model:[@post, @comment], method: :post do |f| %>
         <div class="form-group mb-4">
@@ -97,10 +100,15 @@
         </div>
         <% end %>
       </div>
+      <% end %>
       <% @comments.each do |comment| %>
       <div class="container border-bottom">
       <div class="row">
-        <%= image_tag comment.user.profile_image, class: "rounded-circle border my-auto", size: "30x30" %>
+        <% if comment.user.profile_image.present? %>
+        <%= image_tag comment.user.profile_image, class: "rounded-circle border profile_image" %>
+        <% else %>
+        <%= image_tag 'no-image.jpg', class: "rounded-circle border profile_image" %>
+        <% end %>
         <p class="font-weight-bold ml-4 my-auto"><%= comment.user.name %></p>
       </div>
       <div class="row mt-3">

@@ -9,7 +9,7 @@
           <% else %>
           <h5 class="font-weight-bold text-danger border-danger ml-auto">非公開</h5>
           <% end %>
-          <%= link_to 'レビュー', post_reviews_path(@post.id), class: "btn rounded btn-success ml-auto text-white" %>
+          <%= link_to 'レビュー', admin_review_path(@post.id), method: :get, class: "btn rounded btn-success ml-auto text-white" %>
       </div>
       <div class="row mb-3">
         <% if @post.image.present? %>
@@ -64,7 +64,11 @@
       <% @comments.each do |comment| %>
       <div class="container border-bottom">
         <div class="row">
-          <%= image_tag comment.user.profile_image, class: "rounded-circle border my-auto", size: "30x30" %>
+          <% if comment.user.profile_image.present? %>
+          <%= image_tag comment.user.profile_image, class: "rounded-circle border profile_image" %>
+          <% else %>
+          <%= image_tag 'no-image.jpg', class: "rounded-circle border profile_image" %>
+          <% end %>
           <p class="font-weight-bold ml-4 my-auto"><%= comment.user.name %></p>
         </div>
         <div class="row mt-3">

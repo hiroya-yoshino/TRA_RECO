@@ -26,6 +26,10 @@ class Post < ApplicationRecord
   end
 
   def self.search_place(place)
-    where(location: "#{place}")
+    if place.blank?
+      all
+    else
+      where(location: "#{place}")
+    end
   end
 end

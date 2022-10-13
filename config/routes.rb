@@ -33,7 +33,7 @@ Rails.application.routes.draw do
     resources :posts do
       resources :post_details, only: [:edit, :update, :destroy]
     end
-    resources :reviews, only: [:index, :destroy]
+    resources :reviews, only: [:index, :destroy, :show]
     resources :users, only: [:index, :show, :edit, :update]
     resources :homes, only: [:top]
   end
@@ -47,7 +47,7 @@ Rails.application.routes.draw do
     resources :posts do
       resources :post_details, only: [:edit, :update, :destroy, :create]
       resources :comments, only: [:create]
-      resources :reviews, only: [:index, :new, :create]
+      resources :reviews, only: [:index, :new, :create, :show]
     end
   end
 
