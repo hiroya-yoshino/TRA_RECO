@@ -83,9 +83,10 @@
       <% end %>
     </div>
   </div>
+  <% if  current_user.email != 'guest@example.com' %>
   <div class="row my-5 mx-auto">
     <div class="col-md-10 col-sm-12 bg-white shadow rounded mx-auto py-3 px-5">
-      <% if  current_user.email != 'guest@example.com' %>
+
       <div class="border-bottom border-primary my-3">
         <%= form_with model:[@post, @comment], method: :post do |f| %>
         <div class="form-group mb-4">
@@ -115,9 +116,10 @@
         <p class="ml-5"><%= comment.detail %></p>
       </div>
       </div>
-      <% end %>
+
     </div>
   </div>
+  <% end %>
   <div class="row my-5 px-5">
     <%= link_to :back, class: "text-primary" do %>
     <i class="fas fa-arrow-circle-left fa-2x" style="color: primary"></i>
