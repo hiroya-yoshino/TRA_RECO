@@ -1,8 +1,8 @@
 <div class="container px-5">
   <div class="row my-5 px-5">
     <h4 class="font-weight-bold">レビュー一覧</h4>
-    <% link_to post_review_path, class: "mr-auto" %>
-    <i class="<fas fa-comment-alt-plus fa-2x" style="color: primary"></i>
+    <%= link_to post_review_path, class: "mr-auto" %>
+    <i class="fas fa-comment-alt-plus fa-2x" style="color: primary"></i>
     <% end %>
   </div>
   <% @reviews.each do |review| %>
