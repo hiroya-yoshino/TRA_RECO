@@ -9,7 +9,9 @@
         <% end %>
         <p class="font-weight-bold mx-2 mt-3 prof-font"><%= @user.name %></p>
         <p class="font-weight-bold mx-2 mt-3 prof-font"><%= User.sexes_i18n[@user.sex] %></p>
+        <% if  current_user.email != 'guest@example.com' %>
         <p class="font-weight-bold mx-2 mt-3 prof-font"><%= @user.birth_display %></p>
+        <% end %>
         <% if  current_user.email != 'guest@example.com' %>
         <% if @user.id == current_user.id %>
           <%= link_to '編集', users_information_edit_path, class: "btn border-primary rounded btn-white ml-auto text-primary mt-2 mb-3" %>
