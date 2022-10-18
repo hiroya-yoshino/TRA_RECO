@@ -9,12 +9,9 @@
         <div class="col-10">
           <h5 class="font-weight-bold d-flex align-items-center mb-0"><%= review.title %></h5>
         </div>
-        <div class="col-2">
-          <%= link_to "削除", admin_review_path(review.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn rounded btn-danger ml-auto text-white" %>
-        </div>
       </div>
       <div class="row my-3">
-        <%= link_to admin_user_path(review.user.id), class: "px-0" do %>
+        <%= link_to user_path(review.user.id), class: "px-0" do %>
         <% if review.user.profile_image.present? %>
         <%= image_tag review.user.profile_image, class: "rounded-circle border mr-5 profile_image" %>
         <% else %>
