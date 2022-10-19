@@ -15,7 +15,7 @@
         <h5 class="font-weight-bold mx-3 mt-3"><u><%= user.name %></u></h5>
         <% end %>
         <h5 class="font-weight-bold mx-3 mt-3"><%= User.sexes_i18n[user.sex] %></h5>
-        <% if  user.email != 'guest@example.com' %>
+        <% if user.email != 'guest@example.com' %>
         <h5 class="font-weight-bold mx-3 mt-3"><%= user.birth_display %>生まれ</h5>
         <% end %>
         <% if user.is_delete %>

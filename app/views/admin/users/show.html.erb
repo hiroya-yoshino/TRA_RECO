@@ -9,7 +9,7 @@
         <% end %>
         <p class="font-weight-bold mx-3 mt-3"><%= @user.name %></p>
         <p class="font-weight-bold mx-3 mt-3"><%= User.sexes_i18n[@user.sex] %></p>
-        <% if  @user.email != 'guest@example.com' %>
+        <% if @user.email != 'guest@example.com' %>
         <p class="font-weight-bold mx-3 mt-3"><%= @user.birth_display %></p>
         <% end %>
         <% if @user.is_delete %>
