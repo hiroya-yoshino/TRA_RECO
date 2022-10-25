@@ -10,7 +10,7 @@ class Public::SessionsController < Devise::SessionsController
   def after_sign_out_path_for(resource)
     root_path
   end
-  
+
   def new_guest
     user = User.guest
     sign_in user
