@@ -1,4 +1,5 @@
 class Public::RelationshipsController < ApplicationController
+  before_action :guest_check!
 
   def create
     current_user.follow(params[:user_id])
@@ -12,7 +13,6 @@ class Public::RelationshipsController < ApplicationController
 
   def followings
     user = User.find(params[:user_id])
-    #byebug
     @users = user.followings
   end
 
@@ -21,9 +21,10 @@ class Public::RelationshipsController < ApplicationController
     @users = user.followers
   end
 
-  # def followings
-  # end
-
-  # def followers
-  # end
+  private
+  def guest_check!
+    if current_user.email == 'guest@example.com'
+      redirect_to root_path, notice: "フォロー機能を使うにはユーザ登録が必要です。"
+    end
+  end
 end
