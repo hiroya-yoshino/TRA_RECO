@@ -15,9 +15,10 @@ class Public::CommentsController < ApplicationController
     params.require(:comment).permit(:detail, :post_id, :user_id)
   end
 
-  def guest_check
+  def guest_check!
     if current_user.email == 'guest@example.com'
       redirect_to root_path, notice: "このページを見るにはユーザ登録が必要です。"
     end
   end
+
 end
