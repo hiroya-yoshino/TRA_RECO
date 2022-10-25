@@ -17,7 +17,7 @@ class Public::CommentsController < ApplicationController
 
   def guest_check!
     if current_user.email == 'guest@example.com'
-      redirect_to root_path, notice: "このページを見るにはユーザ登録が必要です。"
+      redirect_to root_path, notice: "コメントを送るにはユーザ登録が必要です。"
     end
   end
 
