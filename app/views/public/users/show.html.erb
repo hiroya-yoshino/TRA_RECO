@@ -12,14 +12,12 @@
         <% if  current_user.email != 'guest@example.com' %>
         <p class="font-weight-bold mx-2 mt-3 prof-font"><%= @user.birth_display %></p>
         <% end %>
-        <% if  current_user.email != 'guest@example.com' %>
         <% if @user.id == current_user.id %>
           <%= link_to '編集', users_information_edit_path, class: "btn border-primary rounded btn-white ml-auto text-primary mt-2 mb-3" %>
         <% elsif current_user.following?(@user) %>
           <%= link_to "フォローを外す", user_relationships_path(@user.id), method: :delete, class: "btn border-primary rounded btn-white ml-auto text-primary my-3" %>
         <% else %>
           <%= link_to "フォローする", user_relationships_path(@user.id), method: :post, class: "btn border-primary rounded btn-white ml-auto text-primary my-3" %>
-        <% end %>
         <% end %>
       </div>
       <div class="row mt-3">
@@ -28,10 +26,8 @@
         <% end %>
       </div>
       <div class="row">
-        <% if  current_user.email != 'guest@example.com' %>
         <%= link_to 'フォロー', user_followings_path(@user.id), class: "btn border-primary rounded btn-white text-primary mr-4 mt-3" %>
         <%= link_to 'フォロワー', user_followers_path(@user.id), class: "btn border-primary rounded btn-white text-primary mt-3" %>
-        <% end %>
       </div>
     </div>
     <div class="col-md-10 col-sm-12 mt-5 mx-auto">
