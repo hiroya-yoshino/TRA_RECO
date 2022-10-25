@@ -1,5 +1,6 @@
 class Public::ReviewsController < ApplicationController
   before_action :authenticate_user!
+  before_action :guest_check!
 
   def new
     @review = Review.new
@@ -19,7 +20,7 @@ class Public::ReviewsController < ApplicationController
     @post = Post.find(params[:post_id])
     @reviews = @post.reviews
   end
-  
+
   def show
     @post = Post.find(params[:id])
     @reviews = @post.reviews
@@ -29,5 +30,11 @@ class Public::ReviewsController < ApplicationController
 
   def review_params
     params.require(:review).permit(:title, :user_id, :post_id, :content)
+  end
+
+  def guest_check!
+    if current_user.email == 'guest@example.com'
+      redirect_to root_path, notice: "レビュー機能を使うにはユーザ登録が必要です。"
+    end
   end
 end
