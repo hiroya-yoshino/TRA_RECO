@@ -4,16 +4,15 @@
       <%= form_with model: @post, url: posts_path, method: :post do |f| %>
         <h5 class ="form-group font-weight-bold text-center">旅登録</h5>
         <%= render 'form', f: f %>
-
         <div class="row mt-5">
-    　　　　<%= f.submit "保存", class:"btn btn-primary mx-auto px-5" %>
-  　　　　</div>
+    　   　<%= f.submit "保存", class:"btn btn-primary mx-auto px-5" %>
+  　   　</div>
       <% end %>
     </div>
   </div>
   <div class="row my-5 px-5">
     <%= link_to :back, class: "text-primary" do %>
-    <i class="fas fa-arrow-circle-left fa-2x" style="color: primary"></i>
+      <i class="fas fa-arrow-circle-left fa-2x" style="color: primary"></i>
     <% end %>
   </div>
 </div>

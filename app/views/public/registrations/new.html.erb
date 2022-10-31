@@ -1,51 +1,52 @@
 <div class="container px-5">
   <div class="row m-5">
     <div class="col-md-10 bg-white shadow rounded mx-auto py-3 px-5">
-    <%= form_with model: @user, url: user_registration_path, method: :post do |f| %>
-    <h5 class ="form-group font-weight-bold text-center">新規登録</h5>
-    <div class="form-group">
-      <p class="text-dark mb-0 mt-4">ニックネーム</p>
-      <%= f.text_field :name, autofocus: true, placeholder: "トラコ", class: "form-control" %>
-    </div>
-    <div class="form-group">
-      <p class="text-dark mb-0">メールアドレス</p>
-      <%= f.email_field :email, placeholder: "sample@example.com", class: "form-control" %>
-    </div>
+      <%= form_with model: @user, url: user_registration_path, method: :post do |f| %>
+        <h5 class ="form-group font-weight-bold text-center">新規登録</h5>
+        <div class="form-group">
+          <p class="text-dark mb-0 mt-4">ニックネーム</p>
+          <%= f.text_field :name, autofocus: true, placeholder: "トラコ", class: "form-control" %>
+        </div>
 
-    <div class="form-group">
-      <p class="text-dark mb-0">
-        パスワード
-        <% if @minimum_password_length %>
-        (<%= @minimum_password_length %>文字以上)
-        <% end %>
-      </p>
-      <%= f.password_field :password, class: "form-control" %>
-    </div>
+        <div class="form-group">
+          <p class="text-dark mb-0">メールアドレス</p>
+          <%= f.email_field :email, placeholder: "sample@example.com", class: "form-control" %>
+        </div>
 
-    <div class="form-group">
-      <p class="text-dark mb-0">パスワード(確認用)</p>
-      <%= f.password_field :password_confirmation, class: "form-control" %>
-    </div>
+        <div class="form-group">
+          <p class="text-dark mb-0">
+            パスワード
+            <% if @minimum_password_length %>
+              (<%= @minimum_password_length %>文字以上)
+            <% end %>
+          </p>
+          <%= f.password_field :password, class: "form-control" %>
+        </div>
 
-    <div class="form-group">
-      <p class="text-dark mb-0">生年月日</p>
-      <%= f.text_field :date_of_birth, placeholder: "YYYYMMDD", class: "form-control" %>
-    </div>
+        <div class="form-group">
+          <p class="text-dark mb-0">パスワード(確認用)</p>
+            <%= f.password_field :password_confirmation, class: "form-control" %>
+        </div>
 
-    <div class="form-group">
-      <p class="text-dark mb-0">性別</p>
-      <%= f.radio_button :sex, User.sexes.key(0) %>
-    　<%= f.label :sex, User.sexes_i18n[:man] %>
-    　<%= f.radio_button :sex, User.sexes.key(1) %>
-    　<%= f.label :sex, User.sexes_i18n[:woman] %>
-    　<%= f.radio_button :sex, User.sexes.key(2) %>
-    　<%= f.label :sex, User.sexes_i18n[:other] %>
-    </div>
+        <div class="form-group">
+          <p class="text-dark mb-0">生年月日</p>
+          <%= f.text_field :date_of_birth, placeholder: "YYYYMMDD", class: "form-control" %>
+        </div>
 
-    <div class="form-group text-center mb-0">
-      <%= f.submit '新規登録' , class:"btn btn-primary btn-lg py-1" %>
-    </div>
-    <% end %>
+        <div class="form-group">
+          <p class="text-dark mb-0">性別</p>
+          <%= f.radio_button :sex, User.sexes.key(0) %>
+    　     <%= f.label :sex, User.sexes_i18n[:man] %>
+    　     <%= f.radio_button :sex, User.sexes.key(1) %>
+    　     <%= f.label :sex, User.sexes_i18n[:woman] %>
+    　     <%= f.radio_button :sex, User.sexes.key(2) %>
+    　     <%= f.label :sex, User.sexes_i18n[:other] %>
+        </div>
+
+        <div class="form-group text-center mb-0">
+          <%= f.submit '新規登録' , class:"btn btn-primary btn-lg py-1" %>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>

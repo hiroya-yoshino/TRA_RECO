@@ -6,28 +6,28 @@
         <h5 class="font-weight-bold mr-auto"><%= @post.title %></h5>
         <% if current_user&.id == @post.user.id %>
           <% if @post.status? %>
-          <h5 class="font-weight-bold text-success border-success ml-auto">公開</h5>
+            <h5 class="font-weight-bold text-success border-success ml-auto">公開</h5>
           <% else %>
-          <h5 class="font-weight-bold text-danger border-danger ml-auto">非公開</h5>
+            <h5 class="font-weight-bold text-danger border-danger ml-auto">非公開</h5>
           <% end %>
         <% else %>
-        <%= link_to 'レビュー', post_review_path(@post.id), method: :get, class: "btn rounded btn-success ml-auto text-white" %>
+          <%= link_to 'レビュー', post_review_path(@post.id), method: :get, class: "btn rounded btn-success ml-auto text-white" %>
         <% end %>
       </div>
       <div class="row mb-3">
         <% if @post.image.present? %>
-        <%= image_tag @post.image, class: "post_show_image" %>
+          <%= image_tag @post.image, class: "post_show_image" %>
         <% else %>
-        <%= image_tag 'no_travel_image', class: "post_show_image" %>
+          <%= image_tag 'no_travel_image', class: "post_show_image" %>
         <% end %>
       </div>
       <div class="row border-bottom pb-3">
         <%= link_to user_path(@post.user.id), class: "px-0" do %>
-        <% if @post.user.profile_image.present? %>
-        <%= image_tag @post.user.profile_image, class: "rounded-circle border profile_image" %>
-        <% else %>
-        <%= image_tag 'no-image.jpg', class: "rounded-circle border profile_image" %>
-        <% end %>
+          <% if @post.user.profile_image.present? %>
+            <%= image_tag @post.user.profile_image, class: "rounded-circle border profile_image" %>
+          <% else %>
+            <%= image_tag 'no-image.jpg', class: "rounded-circle border profile_image" %>
+          <% end %>
         <% end %>
         <p class="font-weight-bold mx-4 mb-0 d-flex align-items-center"><%= @post.user.name %></p>
         <p class="mx-4 mb-0 d-flex align-items-center">
@@ -40,85 +40,83 @@
         <% end %>
       </div>
       <% @post_details.each do |post_detail| %>
-      <div class="col-md-12 my-4 border-bottom">
-        <div class="row">
-          <% if post_detail.image.present? %>
-          <%= image_tag post_detail.image, class: "mx-auto post_show_image" %>
-          <% else %>
-          <%= image_tag 'no_travel_image', class: "mx-auto post_show_image" %>
-          <% end %>
-        </div>
+        <div class="col-md-12 my-4 border-bottom">
+          <div class="row">
+            <% if post_detail.image.present? %>
+              <%= image_tag post_detail.image, class: "mx-auto post_show_image" %>
+            <% else %>
+              <%= image_tag 'no_travel_image', class: "mx-auto post_show_image" %>
+            <% end %>
+          </div>
           <div class="row">
             <h5 class="font-weight-bold"><%= post_detail.spot_name %></h5>
           </div>
           <div class="row">
             <div class="col-4 px-0 d-flex align-items-center">
-            <h5 class="mb-0"><%= post_detail.visit_time.strftime("%-m/%-d %-H:%M") %></h5>
+              <h5 class="mb-0"><%= post_detail.visit_time.strftime("%-m/%-d %-H:%M") %></h5>
             </div>
             <div class="col-8 px-0 text-right">
-            <% if @post.user.id == current_user&.id %>
-            <%= link_to '編集', edit_post_post_detail_path(@post.id,post_detail.id), class: "btn border-primary rounded btn-white ml-auto text-primary" %>
-            <% end %>
+              <% if @post.user.id == current_user&.id %>
+                <%= link_to '編集', edit_post_post_detail_path(@post.id,post_detail.id), class: "btn border-primary rounded btn-white ml-auto text-primary" %>
+              <% end %>
             </div>
           </div>
           <div class="row mx-auto mt-3">
             <p><%=safe_join(post_detail.impre.split("\n"),tag(:br))%></p>
           </div>
-      </div>
+        </div>
       <% end %>
       <% if @post.user.id == current_user&.id %>
-      <div class="row mt-3">
-        <div class="col-md-11 mx-auto">
-          <%= form_with model: [@post, @post_detail], method: :post do |f| %>
-          <h5 class ="form-group font-weight-bold text-center">旅ルート登録</h5>
-          <%= render 'public/post_details/form', f: f %>
-          <div class="row mt-5">
-    　　　　<%= f.submit "保存", class:"btn btn-primary mx-auto px-5" %>
-  　　　   　</div>
-          <% end %>
+        <div class="row mt-3">
+          <div class="col-md-11 mx-auto">
+            <%= form_with model: [@post, @post_detail], method: :post do |f| %>
+              <h5 class ="form-group font-weight-bold text-center">旅ルート登録</h5>
+              <%= render 'public/post_details/form', f: f %>
+              <div class="row mt-5">
+    　　　       　<%= f.submit "保存", class:"btn btn-primary mx-auto px-5" %>
+  　　　       　</div>
+            <% end %>
+          </div>
         </div>
-      </div>
       <% end %>
     </div>
   </div>
   <div class="row my-5 mx-auto">
     <div class="col-md-10 col-sm-12 bg-white shadow rounded mx-auto py-3 px-5">
-
       <div class="border-bottom border-primary my-3">
         <%= form_with model:[@post, @comment], method: :post do |f| %>
-        <div class="form-group mb-4">
+          <div class="form-group mb-4">
+            <div class="row">
+              <div class="col-10 pl-0">
+                <%= f.text_field :detail, class: "form-control mr-5 comment-form", placeholder: "コメントを書く" %>
+              </div>
+              <div class="col-2 pl-0">
+                <%= f.submit "送信", class:"btn btn-primary px-4 mr-auto comment-submit" %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <% @comments.each do |comment| %>
+        <div class="container border-bottom">
           <div class="row">
-            <div class="col-10 pl-0">
-          <%= f.text_field :detail, class: "form-control mr-5 comment-form", placeholder: "コメントを書く" %>
+            <% if comment.user.profile_image.present? %>
+              <%= image_tag comment.user.profile_image, class: "rounded-circle border profile_image" %>
+            <% else %>
+              <%= image_tag 'no-image.jpg', class: "rounded-circle border profile_image" %>
+            <% end %>
+            <p class="font-weight-bold ml-4 my-auto"><%= comment.user.name %></p>
           </div>
-          <div class="col-2 pl-0">
-          <%= f.submit "送信", class:"btn btn-primary px-4 mr-auto comment-submit" %>
-          </div>
+          <div class="row mt-3">
+            <p class="ml-5"><%= comment.detail %></p>
           </div>
         </div>
-        <% end %>
-      </div>
-
-      <% @comments.each do |comment| %>
-      <div class="container border-bottom">
-      <div class="row">
-        <% if comment.user.profile_image.present? %>
-        <%= image_tag comment.user.profile_image, class: "rounded-circle border profile_image" %>
-        <% else %>
-        <%= image_tag 'no-image.jpg', class: "rounded-circle border profile_image" %>
-        <% end %>
-        <p class="font-weight-bold ml-4 my-auto"><%= comment.user.name %></p>
-      </div>
-      <div class="row mt-3">
-        <p class="ml-5"><%= comment.detail %></p>
-      </div>
-      </div>
       <% end %>
     </div>
   </div>
   <div class="row my-5 px-5">
     <%= link_to :back, class: "text-primary" do %>
-    <i class="fas fa-arrow-circle-left fa-2x" style="color: primary"></i>
+      <i class="fas fa-arrow-circle-left fa-2x" style="color: primary"></i>
     <% end %>
   </div>
 </div>
