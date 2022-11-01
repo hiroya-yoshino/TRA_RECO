@@ -1,26 +1,26 @@
 <% if users.present? %>
   <% users.each do |user| %>
-  <div class="col-md-10 bg-white shadow rounded mx-auto my-3 py-3 px-3">
-    <div class="row mx-auto">
-      <div class="col-3">
-      <%= link_to user_path(user.id) do %>
-      <% if user.profile_image.present? %>
-      <%= image_tag user.profile_image, class: "rounded-circle border profile_image" %>
-      <% else %>
-      <%= image_tag 'no-image.jpg', class: "rounded-circle border profile_image" %>
-      <% end %>
-      <% end %>
-      </div>
-      <div class="col-3 d-flex align-items-center">
-      <%= link_to user_path(user.id) do %>
-      <p class="font-weight-bold prof-font mb-0"><%= user.name %></p>
-      <% end %>
-      </div>
-      <div class="col-3 d-flex align-items-center">
-      <p class="font-weight-bold prof-font mb-0"><%= User.sexes_i18n[user.sex] %></p>
+    <div class="col-md-10 bg-white shadow rounded mx-auto my-3 py-3 px-3">
+      <div class="row mx-auto">
+        <div class="col-3">
+          <%= link_to user_path(user.id) do %>
+            <% if user.profile_image.present? %>
+              <%= image_tag user.profile_image, class: "rounded-circle border profile_image" %>
+            <% else %>
+              <%= image_tag 'no-image.jpg', class: "rounded-circle border profile_image" %>
+            <% end %>
+          <% end %>
+        </div>
+        <div class="col-3 d-flex align-items-center">
+          <%= link_to user_path(user.id) do %>
+            <p class="font-weight-bold prof-font mb-0"><%= user.name %></p>
+          <% end %>
+        </div>
+        <div class="col-3 d-flex align-items-center">
+          <p class="font-weight-bold prof-font mb-0"><%= User.sexes_i18n[user.sex] %></p>
+        </div>
       </div>
     </div>
-  </div>
   <% end %>
 <% else %>
   <h4 class="mx-auto font-weight-bold mt-5">ユーザーはいません</h4>

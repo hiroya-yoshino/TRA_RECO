@@ -1,28 +1,28 @@
 <div class="container px-5">
   <div class="row m-5">
     <div class="col-md-10 bg-white shadow rounded mx-auto py-5 px-5">
-    <%= form_with model:[@post, @review], url: post_reviews_path, method: :post do |f| %>
-    <h5 class ="form-group font-weight-bold text-center mb-5">レビュー作成</h5>
-    <div class="form-group">
-      <p class="text-dark mb-0 mt-5">タイトル</p>
-      <%= f.text_field :title, autofocus: true, class: "form-control mb-5" %>
-    </div>
+      <%= form_with model:[@post, @review], url: post_reviews_path, method: :post do |f| %>
+        <h5 class ="form-group font-weight-bold text-center mb-5">レビュー作成</h5>
+        <div class="form-group">
+          <p class="text-dark mb-0 mt-5">タイトル</p>
+          <%= f.text_field :title, autofocus: true, class: "form-control mb-5" %>
+        </div>
 
-    <div class="form-group">
-      <p class="text-dark mb-0 mt-5">コメント</p>
-      <%= f.text_area :content, class: "form-control mb-5" %>
-    </div>
+        <div class="form-group">
+          <p class="text-dark mb-0 mt-5">コメント</p>
+          <%= f.text_area :content, class: "form-control mb-5" %>
+        </div>
 
-    <div class="form-group text-center mb-0 mt-5">
-      <%= f.submit '送信' , class:"btn btn-primary btn-lg py-1" %>
-    </div>
-    <% end %>
+        <div class="form-group text-center mb-0 mt-5">
+          <%= f.submit '送信' , class:"btn btn-primary btn-lg py-1" %>
+        </div>
+      <% end %>
     </div>
   </div>
 
   <div class="row my-5 px-5">
     <%= link_to :back, class: "text-primary" do %>
-    <i class="fas fa-arrow-circle-left fa-2x" style="color: primary"></i>
+      <i class="fas fa-arrow-circle-left fa-2x" style="color: primary"></i>
     <% end %>
   </div>
 </div>
