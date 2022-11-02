@@ -5,24 +5,24 @@
       <div class="row mb-3">
         <h5 class="font-weight-bold mr-auto"><%= @post.title %></h5>
           <% if @post.status? %>
-          <h5 class="font-weight-bold text-success border-success ml-auto">公開</h5>
+            <h5 class="font-weight-bold text-success border-success ml-auto">公開</h5>
           <% else %>
-          <h5 class="font-weight-bold text-danger border-danger ml-auto">非公開</h5>
+            <h5 class="font-weight-bold text-danger border-danger ml-auto">非公開</h5>
           <% end %>
           <%= link_to 'レビュー', admin_reviews_path(@post.id), class: "btn rounded btn-success ml-auto text-white" %>
       </div>
       <div class="row mb-3">
         <% if @post.image.present? %>
-        <%= image_tag @post.image, class: "post_show_image" %>
+          <%= image_tag @post.image, class: "post_show_image" %>
         <% else %>
-        <%= image_tag 'no_travel_image', class: "post_show_image" %>
+          <%= image_tag 'no_travel_image', class: "post_show_image" %>
         <% end %>
       </div>
       <div class="row border-bottom">
         <% if @post.user.profile_image.present? %>
-        <%= image_tag @post.user.profile_image, class: "rounded-circle border profile_image" %>
+          <%= image_tag @post.user.profile_image, class: "rounded-circle border profile_image" %>
         <% else %>
-        <%= image_tag 'no-image.jpg', class: "rounded-circle border profile_image" %>
+          <%= image_tag 'no-image.jpg', class: "rounded-circle border profile_image" %>
         <% end %>
         <p class="font-weight-bold mx-4 mb-0 d-flex align-items-center"><%= @post.user.name %></p>
         <p class="mx-4 mb-0 d-flex align-items-center">
@@ -34,13 +34,13 @@
       </div>
       <div class="col-md-12 my-4">
         <% @post_details.each do |post_detail| %>
-        <div class="row">
-          <% if post_detail.image.present? %>
-          <%= image_tag post_detail.image, class: "mx-auto post_show_image" %>
-          <% else %>
-          <%= image_tag 'no_travel_image', class: "mx-auto post_show_image" %>
-          <% end %>
-        </div>
+          <div class="row">
+            <% if post_detail.image.present? %>
+              <%= image_tag post_detail.image, class: "mx-auto post_show_image" %>
+            <% else %>
+              <%= image_tag 'no_travel_image', class: "mx-auto post_show_image" %>
+            <% end %>
+          </div>
           <div class="row">
             <h6 class="font-weight-bold"><%= post_detail.spot_name %></h6>
           </div>
@@ -62,21 +62,21 @@
   <div class="row m-5">
     <div class="col-md-10 bg-white shadow rounded mx-auto py-3 px-5">
       <% @comments.each do |comment| %>
-      <div class="container border-bottom">
-        <div class="row">
-          <%= image_tag comment.user.profile_image, class: "rounded-circle border my-auto", size: "30x30" %>
-          <p class="font-weight-bold ml-4 my-auto"><%= comment.user.name %></p>
+        <div class="container border-bottom">
+          <div class="row">
+            <%= image_tag comment.user.profile_image, class: "rounded-circle border my-auto", size: "30x30" %>
+            <p class="font-weight-bold ml-4 my-auto"><%= comment.user.name %></p>
+          </div>
+          <div class="row mt-3">
+            <p class="ml-5"><%=safe_join(comment.detail.split("\n"),tag(:br))%></p>
+          </div>
         </div>
-        <div class="row mt-3">
-          <p class="ml-5"><%=safe_join(comment.detail.split("\n"),tag(:br))%></p>
-        </div>
-      </div>
       <% end %>
     </div>
   </div>
   <div class="row my-5 px-5">
     <%= link_to :back, class: "text-primary" do %>
-    <i class="fas fa-arrow-circle-left fa-2x" style="color: primary"></i>
+      <i class="fas fa-arrow-circle-left fa-2x" style="color: primary"></i>
     <% end %>
   </div>
 </div>

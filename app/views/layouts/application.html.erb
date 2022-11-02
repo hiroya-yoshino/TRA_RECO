@@ -16,111 +16,109 @@
       <nav class="navbar navbar-expand-lg navbar-light trareco-color p-1 shadow mr-0">
         <div class="container">
           <% if admin_signed_in? %>
-          <a class="navbar-brand border border-light m-2 p-2" href="/admin">
+            <a class="navbar-brand border border-light m-2 p-2" href="/admin">
               <div class="text-light">
                 TRA<i class="far fa-map text-light px-1"></i>RECO
               </div>
-          </a>
+            </a>
           <% else %>
-          <a class="navbar-brand border border-light m-2 p-2" href="/">
+            <a class="navbar-brand border border-light m-2 p-2" href="/">
               <div class="text-light">
                 TRA<i class="far fa-map text-light px-1"></i>RECO
               </div>
-          </a>
+            </a>
           <% end %>
 
 
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-          <ul class="navbar-nav mr-auto ">
-          <% if admin_signed_in? %>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav mr-auto ">
+              <% if admin_signed_in? %>
 
-          <% elsif user_signed_in? %>
-            <li class="nav-item">
-              <%= link_to about_path, class:"nav-link button text-white" do %>
-                TRARECOとは？
+              <% elsif user_signed_in? %>
+                <li class="nav-item">
+                  <%= link_to about_path, class:"nav-link button text-white" do %>
+                    TRARECOとは？
+                  <% end %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to new_post_path, class:"nav-link button text-white" do %>
+                    旅登録
+                  <% end %>
+                </li>
+              <% else %>
+                <li class="nav-item mx-4">
+                  <%= link_to about_path, class:"nav-link button text-white" do %>
+                    TRARECOとは？
+                  <% end %>
+                </li>
               <% end %>
-            </li>
-    <li class="nav-item">
-        <%= link_to new_post_path, class:"nav-link button text-white" do %>
-          旅登録
-        <% end %>
-    </li>
-    <% else %>
-    <li class="nav-item mx-4">
-        <%= link_to about_path, class:"nav-link button text-white" do %>
-          TRARECOとは？
-        <% end %>
-    </li>
-    <% end %>
-
-    </ul>
-        <ul class="navbar-nav ml-auto ">
-    <% if admin_signed_in? %>
-    <li class="nav-item border border-white rounded mx-2">
-        <%= link_to admin_reviews_path, class:"nav-link button text-white" do %>
-          レビュー一覧
-        <% end %>
-    </li>
-    <li class="nav-item border border-white rounded mx-2">
-        <%= link_to admin_users_path, class:"nav-link button text-white" do %>
-          ユーザ一覧
-        <% end %>
-    </li>
-    <li class="nav-item border border-white rounded mx-2">
-        <%= link_to admin_path, class:"nav-link button text-white" do %>
-          投稿一覧
-        <% end %>
-    </li>
-    <li class="nav-item border border-white rounded mx-2">
-        <%= link_to destroy_admin_session_path, method: :delete, class:"nav-link button text-white" do %>
-          ログアウト
-        <% end %>
-    </li>
-    <% elsif user_signed_in? %>
-    <li class="nav-item border border-white rounded mx-2 text-center">
-        <%= link_to destroy_user_session_path, method: :delete, class:"nav-link button text-white" do %>
-          ログアウト
-        <% end %>
-    </li>
-    <li class="nav-item mx-3">
-      <%= link_to user_path(current_user.id) do %>
-        <% if current_user.profile_image.present? %>
-        <%= image_tag current_user.profile_image, class: "rounded-circle shadow", size: "40x40" %>
-        <% else %>
-        <%= image_tag 'no-image.jpg', class: "rounded-circle shadow", size: "40x40" %>
-        <% end %>
-      <% end %>
-    </li>
-    <% else %>
-    <li class="nav-item bg-white border border-white rounded mx-2">
-        <%= link_to users_guest_sign_in_path, method: :post, class:"nav-link button text-primary px-1" do %>
-          ゲストログイン(閲覧用)
-        <% end %>
-    </li>
-    <li class="nav-item bg-white border border-white rounded mx-2">
-        <%= link_to new_user_session_path, class:"nav-link button text-primary px-1" do %>
-          ログイン
-        <% end %>
-    </li>
-    <li class="nav-item border border-white rounded mx-2">
-        <%= link_to new_user_registration_path, class:"nav-link button text-white" do %>
-          新規登録
-        <% end %>
-    </li>
-    <% end %>
-
-    </ul>
-    </div>
+            </ul>
+            <ul class="navbar-nav ml-auto ">
+              <% if admin_signed_in? %>
+                <li class="nav-item border border-white rounded mx-2">
+                  <%= link_to admin_reviews_path, class:"nav-link button text-white" do %>
+                    レビュー一覧
+                  <% end %>
+                </li>
+                <li class="nav-item border border-white rounded mx-2">
+                  <%= link_to admin_users_path, class:"nav-link button text-white" do %>
+                    ユーザ一覧
+                  <% end %>
+                </li>
+                <li class="nav-item border border-white rounded mx-2">
+                  <%= link_to admin_path, class:"nav-link button text-white" do %>
+                    投稿一覧
+                  <% end %>
+                </li>
+                <li class="nav-item border border-white rounded mx-2">
+                  <%= link_to destroy_admin_session_path, method: :delete, class:"nav-link button text-white" do %>
+                    ログアウト
+                  <% end %>
+                </li>
+              <% elsif user_signed_in? %>
+                <li class="nav-item border border-white rounded mx-2 text-center">
+                  <%= link_to destroy_user_session_path, method: :delete, class:"nav-link button text-white" do %>
+                    ログアウト
+                  <% end %>
+                </li>
+                <li class="nav-item mx-3">
+                  <%= link_to user_path(current_user.id) do %>
+                    <% if current_user.profile_image.present? %>
+                      <%= image_tag current_user.profile_image, class: "rounded-circle shadow", size: "40x40" %>
+                    <% else %>
+                      <%= image_tag 'no-image.jpg', class: "rounded-circle shadow", size: "40x40" %>
+                    <% end %>
+                  <% end %>
+                </li>
+              <% else %>
+                <li class="nav-item bg-white border border-white rounded mx-2">
+                  <%= link_to users_guest_sign_in_path, method: :post, class:"nav-link button text-primary px-1" do %>
+                    ゲストログイン(閲覧用)
+                  <% end %>
+                </li>
+                <li class="nav-item bg-white border border-white rounded mx-2">
+                  <%= link_to new_user_session_path, class:"nav-link button text-primary px-1" do %>
+                    ログイン
+                  <% end %>
+                </li>
+                <li class="nav-item border border-white rounded mx-2">
+                  <%= link_to new_user_registration_path, class:"nav-link button text-white" do %>
+                    新規登録
+                  <% end %>
+                </li>
+              <% end %>
+            </ul>
+          </div>
         </div>
       </nav>
 
     </header>
     <div class="row">
       <div class="mx-auto my-2">
-        <h5 class="text-danger"><%= flash[:notice] %></h2>
+        <h5 class="text-danger"><%= flash[:notice] %></h5>
       </div>
     </div>
     <%= yield %>

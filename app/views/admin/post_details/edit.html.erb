@@ -20,14 +20,14 @@
           <%= f.text_area :impre, class: "form-control" %>
         </div>
         <div class="row mx-auto mb-5 mt-4">
-        <div class="col-3 ml-auto mr-5 text-right">
-          <%= f.submit "変更を保存", class:"btn btn-success mx-auto" %>
+          <div class="col-3 ml-auto mr-5 text-right">
+            <%= f.submit "変更を保存", class:"btn btn-success mx-auto" %>
+          </div>
+          <div class="col-3 ml-5 mr-auto text-left">
+            <%= link_to "削除", post_post_detail_path(@post_detail.post.id,@post_detail.id), method: :delete, "data-confirm" => "本当に削除しますか？", class:"btn btn-danger mx-auto" %>
+          </div>
         </div>
-        <div class="col-3 ml-5 mr-auto text-left">
-          <%= link_to "削除", post_post_detail_path(@post_detail.post.id,@post_detail.id), method: :delete, "data-confirm" => "本当に削除しますか？", class:"btn btn-danger mx-auto" %>
-        </div>
-      </div>
-  　　　　<% end %>
-      </div>
+  　　　<% end %>
     </div>
   </div>
+</div>
