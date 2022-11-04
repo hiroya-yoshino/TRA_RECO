@@ -3,11 +3,11 @@
     <h4 class="font-weight-bold">レビュー一覧</h4>
   </div>
   <% @reviews.each do |review| %>
-  <%= render 'review_list', review: review %>
+    <%= render 'review_list', review: review %>
   <% end %>
   <div class="row my-5 px-5">
     <%= link_to :back, class: "text-primary" do %>
-    <i class="fas fa-arrow-circle-left fa-2x" style="color: primary"></i>
+      <i class="fas fa-arrow-circle-left fa-2x" style="color: primary"></i>
     <% end %>
   </div>
 </div>
