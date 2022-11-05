@@ -17,6 +17,9 @@ class Public::PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
+    if current_user&.id != @post.user_id
+      redirect_to root_path, notice: '他ユーザの投稿編集はできません'
+    end
   end
 
   def show
