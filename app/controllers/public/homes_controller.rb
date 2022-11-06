@@ -5,7 +5,7 @@ class Public::HomesController < ApplicationController
   end
 
   def search
-    post_places = Post.search_place(params[:place])
+    post_places = Post.search_place(params[:place]).where(user_id: [*current_user.following_ids])
     @posts = post_places.search(params[:keyword]).page(params[:page]).per(10).where(status: true)
     @keyword = params[:keyword]
     render "top"
