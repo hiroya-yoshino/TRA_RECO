@@ -6,13 +6,21 @@
         <div class="search-form">
           <%= form_with url: search_path, method: :get, local: true do |f| %>
             <div class="row my-3">
-              <div class="col-md-10">
+              <div class="col-md-11">
                 <%= f.text_field :keyword, value: @keyword, class: "form-control", placeholder: "検索する" %>
               </div>
+        　   </div>
+            <div class="row my-3">
               <div class="col-md-2 form-select">
                 <%= f.select :place, Post.locations.keys.map {|k| [I18n.t("enums.post.location.#{k}"), k]}, include_blank: "全て" %>
               </div>
-        　   </div>
+              <div class="col-md-5 form-group bg-light px-0 text-center">
+                <%= f.radio_button :follower_select, 'true', class: "ml-2 mb-0" %>
+                <%= f.label :follower_select, 'フォロワーのみ表示', value: true, class: "mr-2 mb-0" %>
+                <%= f.radio_button :follower_select, 'false', class: "mb-0" %>
+                <%= f.label :follower_select, '全ての投稿を表示', value: false, class: "mb-0" %>
+              </div>
+            </div>
             <div class="row mb-3 mt-4">
               <%= f.submit "検索", class:"btn btn-primary mx-auto px-5" %>
         　   </div>
