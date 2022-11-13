@@ -14,7 +14,7 @@
               <div class="col-md-2 form-select">
                 <%= f.select :place, Post.locations.keys.map {|k| [I18n.t("enums.post.location.#{k}"), k]}, include_blank: "全て" %>
               </div>
-              <div class="follow_item form-group text-center">
+              <div class="follow_item text-center">
                 <%= f.radio_button :follower_select, 'true', class: "ml-2 mb-0" %>
                 <%= f.label :follower_select, 'フォロワーのみ表示', value: true, class: "mr-2 mb-0" %>
                 <%= f.radio_button :follower_select, 'false', class: "mb-0" %>
