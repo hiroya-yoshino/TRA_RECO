@@ -3,6 +3,7 @@ class Post < ApplicationRecord
   has_many :post_details, dependent: :destroy
   has_many :reviews, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :favorites, dependent: :destroy
 
   enum location: {
     hokkaidou:1,aomoriken:2,iwateken:3,miyagiken:4,akitaken:5,yamagataken:6,fukusimaken:7,
@@ -16,6 +17,10 @@ class Post < ApplicationRecord
   }
 
   has_one_attached :image
+
+  def favorited_by?(user)
+    favorites.exists?(user_id: user.id)
+  end
 
   def date_display
     date.strip[0..3] + '.' + date.strip[4..5] + '.' + date.strip[6..7]
