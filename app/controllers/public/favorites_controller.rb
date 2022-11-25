@@ -14,4 +14,10 @@ class Public::FavoritesController < ApplicationController
     redirect_to post_path(pos)
   end
 
+  def index
+    @user = User.find(params[:user_id])
+    @favorites = @user.favorites
+    @posts = @favorites.posts
+  end
+
 end
