@@ -43,7 +43,9 @@ Rails.application.routes.draw do
       resource :relationships, only: [:create, :destroy]
       get 'followings' => 'relationships#followings', as: 'followings'
       get 'followers' => 'relationships#followers', as: 'followers'
-      resources :favorites, only: [:index]
+      member do
+        get :favorites
+      end
     end
     resources :posts do
       resources :post_details, only: [:edit, :update, :destroy, :create]
