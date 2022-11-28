@@ -26,7 +26,7 @@
       <div class="row">
         <%= link_to 'フォロー', user_followings_path(@user.id), class: "btn border-primary rounded btn-white text-primary mr-4 mt-3" %>
         <%= link_to 'フォロワー', user_followers_path(@user.id), class: "btn border-primary rounded btn-white text-primary mr-4 mt-3" %>
-        <%= link_to 'いいね', user_favorites_path(@user.id), method: :get, class: "btn border-primary rounded btn-white text-primary mt-3" %>
+        <%= link_to 'いいね', favorites_user_path(@user), method: :get, class: "btn border-primary rounded btn-white text-primary mt-3" %>
       </div>
     </div>
     <div class="col-md-10 col-sm-12 mt-5 mx-auto">

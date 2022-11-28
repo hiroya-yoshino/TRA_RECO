@@ -29,7 +29,7 @@ class Public::UsersController < ApplicationController
 
   def favorites
     favorites = Favorite.where(user_id: @user.id).pluck(:post_id)
-    @favorites_posts = Post.find(favorites)
+    @favorite_posts = Post.find(favorites)
   end
 
   private
