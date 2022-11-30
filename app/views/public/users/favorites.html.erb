@@ -1,11 +1,11 @@
 <div class="container px-5">
-  <div class="row m-5">
+  <div class="row my-5">
     <div class="col-md-10 mt-5 mx-auto">
       <h3 class="font-weight-bold text-center"><%= @user.name %>のいいね一覧</h3>
     </div>
     <% @favorite_posts.each do |pos| %>
-      <div class="row my-5">
-        <div class="col-md-10 col-sm-12 bg-white shadow rounded mx-auto py-3 px-5">
+      <div class="row my-5 mx-auto">
+        <div class="col-md-12 bg-white shadow rounded mx-auto py-3 px-3">
           <div class="row">
             <div class="col-md-5 my-auto text-center">
               <%= link_to post_path(pos.id) do %>
@@ -31,13 +31,6 @@
         　　        <% end %>
                 <% end %>
                 <p class="font-weight-bold my-auto"><%= pos.user.name %></p>
-              </div>
-              <div class="row my-1">
-                <p class="mx-4 mt-3">
-                  <i class="fas fa-map-marker-alt"></i>
-                  <%= Post.locations_i18n[pos.location] %>
-                </p>
-                <p class="mx-4 mt-3"><%= pos.date_display %></p>
               </div>
             </div>
           </div>
