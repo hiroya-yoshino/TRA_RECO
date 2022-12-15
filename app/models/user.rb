@@ -8,7 +8,7 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :reviews, dependent: :destroy
   has_many :comments, dependent: :destroy
-  has_many :follows, dependent: :destroy
+  #has_many :follows, dependent: :destroy
 
   has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
   has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
@@ -51,7 +51,7 @@ class User < ApplicationRecord
     find_or_create_by(email: 'guest@example.com') do |user|
       user.password = SecureRandom.urlsafe_base64
       user.name = 'ゲスト（閲覧用）'
-      user.date_of_birth = 00000000
+      user.date_of_birth = '00000000'
       user.sex = User.sexes.key(2)
     end
   end
