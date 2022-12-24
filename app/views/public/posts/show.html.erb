@@ -75,6 +75,37 @@
           <div class="row mx-auto mt-3">
             <p><%=safe_join(post_detail.impre.split("\n"),tag(:br))%></p>
           </div>
+          <div class="row mx-auto mt-3">
+            <p><%= post_detail.address %></p>
+            <script>
+              function initMap(){
+                // 地図の位置情報(緯度・経度)を取得
+                let mapPosition = {lat: <%= post_detail.latitude || 0 %> , lng: <%= post_detail.longitude || 0 %> };
+                let map = new google.maps.Map(document.getElementById('map'), {
+                  zoom: 15,
+                  center: mapPosition
+                });
+                let transitLayer = new google.maps.TransitLayer();
+                transitLayer.setMap(map);
+
+                let contentString = '【住所】<%= post_detail.address %>';
+                let infowindow = new google.maps.InfoWindow({
+                  content: contentString
+                });
+
+                let marker = new google.maps.Marker({
+                  position: mapPosition,
+                  map: map,
+                  title: contentString
+                });
+
+                marker.addListener('click', function(){
+                  infowindow.open(map, marker);
+                });
+              }
+            </script>
+            <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['AIzaSyCC_vSKo6CQ0dlhORqB_MDz0YF3wnKxJ3Y'] %>&callback=initMap" async defer></script>
+          </div>
         </div>
       <% end %>
       <% if @post.user.id == current_user&.id %>
@@ -102,7 +133,7 @@
                 <%= f.text_field :detail, class: "form-control mr-5 comment-form", placeholder: "コメントを書く" %>
               </div>
               <div class="col-2 pl-0">
-                <%= f.submit "送信", class:"btn btn-primary px-4 mr-auto comment-submit" %>
+                <%= f.submit "送信", class:"btn btn-primary px-4 mr-auto comment-submit", data: { turbo: false } %>
               </div>
             </div>
           </div>
