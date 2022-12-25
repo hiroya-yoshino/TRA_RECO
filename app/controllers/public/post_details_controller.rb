@@ -33,6 +33,6 @@ class Public::PostDetailsController < ApplicationController
   private
 
   def post_detail_params
-    params.require(:post_detail).permit(:spot_name, :visit_time, :impre, :image)
+    params.require(:post_detail).permit(:spot_name, :visit_time, :impre, :image, :address)
   end
 end

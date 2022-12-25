@@ -1,3 +1,33 @@
+<script type="text/javascript">
+              function initMap(){
+                // 地図の位置情報(緯度・経度)を取得
+                let mapPosition = {lat: <%= nil.presence || 0 %> , lng: <%= nil.presence || 0 %> };
+                let map = new google.maps.Map(document.getElementById('map'), {
+                  zoom: 15,
+                  center: mapPosition
+                });
+                let transitLayer = new google.maps.TransitLayer();
+                transitLayer.setMap(map);
+
+                let contentString = '【住所】<%= "aaaaaa" %>';
+                let infowindow = new google.maps.InfoWindow({
+                  content: contentString
+                });
+
+                let marker = new google.maps.Marker({
+                  position: mapPosition,
+                  map: map,
+                  title: contentString
+                });
+
+                marker.addListener('click', function(){
+                  infowindow.open(map, marker);
+                });
+              }
+            </script>
+            <script async defer
+                    src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap">
+            </script>
 <div class="container">
   <h4 class="font-weight-bold text-center my-5">旅の詳細</h4>
   <div class="row mx-auto">
@@ -50,6 +80,14 @@
           <%= link_to '編集', edit_post_path(@post.id), class: "btn border-primary rounded btn-white ml-auto text-primary d-flex align-items-center my-auto" %>
         <% end %>
       </div>
+      <div id="map"></div>
+
+            <style>
+            #map{
+              height: 150px;
+              width: 270px;
+              }
+            </style>
       <% @post_details.each do |post_detail| %>
         <div class="col-md-12 my-4 border-bottom">
           <div class="row">
@@ -77,34 +115,7 @@
           </div>
           <div class="row mx-auto mt-3">
             <p><%= post_detail.address %></p>
-            <script>
-              function initMap(){
-                // 地図の位置情報(緯度・経度)を取得
-                let mapPosition = {lat: <%= post_detail.latitude || 0 %> , lng: <%= post_detail.longitude || 0 %> };
-                let map = new google.maps.Map(document.getElementById('map'), {
-                  zoom: 15,
-                  center: mapPosition
-                });
-                let transitLayer = new google.maps.TransitLayer();
-                transitLayer.setMap(map);
-
-                let contentString = '【住所】<%= post_detail.address %>';
-                let infowindow = new google.maps.InfoWindow({
-                  content: contentString
-                });
-
-                let marker = new google.maps.Marker({
-                  position: mapPosition,
-                  map: map,
-                  title: contentString
-                });
-
-                marker.addListener('click', function(){
-                  infowindow.open(map, marker);
-                });
-              }
-            </script>
-            <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['AIzaSyCC_vSKo6CQ0dlhORqB_MDz0YF3wnKxJ3Y'] %>&callback=initMap" async defer></script>
+            <!--<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap" async defer></script>-->
           </div>
         </div>
       <% end %>
