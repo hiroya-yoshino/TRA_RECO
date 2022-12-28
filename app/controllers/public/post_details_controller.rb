@@ -29,6 +29,10 @@ class Public::PostDetailsController < ApplicationController
     post_detail.destroy
     redirect_to post_path(@post.id)
   end
+  
+  def map
+    @post_detail = PostDetail.find(params[:id])
+  end
 
   private
 

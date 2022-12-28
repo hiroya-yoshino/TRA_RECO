@@ -48,10 +48,11 @@ Rails.application.routes.draw do
       end
     end
     resources :posts do
-      resources :post_details, only: [:edit, :update, :destroy, :create]
+      resources :post_details, only: [:edit, :update, :destroy, :create, :show] do
+        get 'map' => 'post_details#map', as: 'map'
+      end
       resources :comments, only: [:create]
       resources :reviews, only: [:index, :new, :create, :show]
-      resources :maps, only: [:index, :new, :create, :show]
       resource :favorites, only: [:create, :destroy]
     end
   end
