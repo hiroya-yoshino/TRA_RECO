@@ -1,7 +1,18 @@
+<div class="row mx-auto mt-3">
+  <%= @post_detail.latitude %>
+</div>
+<div id="map"></div>
+
+            <style>
+            #map{
+              height: 150px;
+              width: 270px;
+              }
+            </style>
 <script type="text/javascript">
   function initMap(){
     // 地図の位置情報(緯度・経度)を取得
-    let mapPosition = {lat: <%= @post_detail.latitude.presence || 0 %> , lng: <%= @post_detail.latitude.presence || 0 %> };
+    let mapPosition = {lat: <%= @post_detail.latitude.presence || 0 %> , lng: <%= @post_detail.longitude.presence || 0 %> };
     let map = new google.maps.Map(document.getElementById('map'), {
       zoom: 15,
       center: mapPosition

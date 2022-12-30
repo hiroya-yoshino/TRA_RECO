@@ -50,14 +50,6 @@
           <%= link_to '編集', edit_post_path(@post.id), class: "btn border-primary rounded btn-white ml-auto text-primary d-flex align-items-center my-auto" %>
         <% end %>
       </div>
-      <div id="map"></div>
-
-            <style>
-            #map{
-              height: 150px;
-              width: 270px;
-              }
-            </style>
       <% @post_details.each do |post_detail| %>
         <div class="col-md-12 my-4 border-bottom">
           <div class="row">
@@ -83,9 +75,11 @@
           <div class="row mx-auto mt-3">
             <p><%=safe_join(post_detail.impre.split("\n"),tag(:br))%></p>
           </div>
-          <div class="row mx-auto mt-3">
-            <%= link_to post_detail.address, post_post_detail_map_path(@post.id,post_detail.id), class: "btn ml-auto text-primary" %>
-          </div>
+          <% if post_detail.address.present? %>
+            <div class="row mx-auto mt-3">
+              <%= link_to post_detail.address, post_post_detail_map_path(@post.id,post_detail.id), class: "btn ml-auto text-primary" %>
+            </div>
+          <% end %>
         </div>
       <% end %>
       <% if @post.user.id == current_user&.id %>
