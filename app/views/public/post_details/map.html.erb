@@ -1,12 +1,15 @@
-<div class="row mx-auto mt-3">
-  <%= @post_detail.latitude %>
-</div>
+<div class="container">
+  <h4 class="font-weight-bold text-center my-5"></h4>
+  <div class="row mx-auto mt-3">
+      <%= @post_detail.address %>
+  </div>
+  <div class="row mx-auto">
 <div id="map"></div>
 
             <style>
             #map{
-              height: 150px;
-              width: 270px;
+              height: 400px;
+              width: 620px;
               }
             </style>
 <script type="text/javascript">
@@ -40,8 +43,12 @@
   src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap">
 </script>
 
-<div class="row my-5 px-5">
+</div>
+
+
+  <div class="row my-5 px-5">
     <%= link_to :back, class: "text-primary" do %>
       <i class="fas fa-arrow-circle-left fa-2x" style="color: primary"></i>
     <% end %>
+  </div>
 </div>
