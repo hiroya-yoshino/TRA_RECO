@@ -1,10 +1,11 @@
 <div class="container">
   <h4 class="font-weight-bold text-center my-5"></h4>
+  <div class="col-md-10 col-sm-12 bg-white shadow rounded mx-auto py-3 px-5">
   <div class="row mx-auto mt-3">
-      <%= @post_detail.address %>
+      <h5 class="font-weight-bold mr-auto"><%= @post_detail.address %></h5>
   </div>
   <div class="row mx-auto">
-<div id="map"></div>
+<div id="map" class="mx-auto"></div>
 
             <style>
             #map{
@@ -42,7 +43,7 @@
 <script async defer
   src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap">
 </script>
-
+</div>
 </div>
 
 
