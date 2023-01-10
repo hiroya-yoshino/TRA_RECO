@@ -82,6 +82,23 @@
           <% end %>
         </div>
       <% end %>
+      <div class="row mx-auto">
+<div id="map" class="mx-auto"></div>
+
+            <style>
+            #map{
+              height: 400px;
+              width: 620px;
+              }
+            </style>
+<script type="text/javascript">
+
+</script>
+<script async defer
+  src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap">
+</script>
+</div>
+</div>
       <% if @post.user.id == current_user&.id %>
         <div class="row mt-3">
           <div class="col-md-11 mx-auto">
