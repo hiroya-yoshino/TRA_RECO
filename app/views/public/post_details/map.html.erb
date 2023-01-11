@@ -2,7 +2,7 @@
   <h4 class="font-weight-bold text-center my-5"></h4>
   <div class="col-md-10 col-sm-12 bg-white shadow rounded mx-auto py-3 px-5">
   <div class="row mx-auto mt-3">
-      <h5 class="font-weight-bold mr-auto"><%= @post_detail.address %></h5>
+      <h5 class="font-weight-bold mr-auto"></h5>
   </div>
   <div class="row mx-auto">
 <div id="map" class="mx-auto"></div>
@@ -13,33 +13,7 @@
               width: 620px;
               }
             </style>
-<script type="text/javascript">
-  function initMap(){
-    // 地図の位置情報(緯度・経度)を取得
-    let mapPosition = {lat: <%= @post_detail.latitude.presence || 0 %> , lng: <%= @post_detail.longitude.presence || 0 %> };
-    let map = new google.maps.Map(document.getElementById('map'), {
-      zoom: 15,
-      center: mapPosition
-    });
-    let transitLayer = new google.maps.TransitLayer();
-    transitLayer.setMap(map);
-
-    let contentString = '【住所】<%= @post_detail.address %>';
-    let infowindow = new google.maps.InfoWindow({
-      content: contentString
-    });
-
-    let marker = new google.maps.Marker({
-      position: mapPosition,
-      map: map,
-      title: contentString
-    });
-
-    marker.addListener('click', function(){
-      infowindow.open(map, marker);
-    });
-  }
-</script>
+<%= javascript_pack_tag 'map' %>
 <script async defer
   src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap">
 </script>
