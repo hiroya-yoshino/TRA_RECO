@@ -5,7 +5,13 @@
       <h5 class="font-weight-bold mr-auto"></h5>
   </div>
   <div class="row mx-auto">
-<div id="map" class="mx-auto"></div>
+    <h5 class="font-weight-bold mr-auto"><%= @post_detail.address %></h5>
+      <div
+        id="map"
+        data-lat="<%= @post_detail.latitude.presence || 0 %>"
+        data-lng="<%= @post_detail.longitude.presence || 0 %>"
+        data-address="<%= @post_detail.address %>"
+        class="mx-auto"></div>
 
             <style>
             #map{

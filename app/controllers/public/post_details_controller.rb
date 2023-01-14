@@ -31,7 +31,7 @@ class Public::PostDetailsController < ApplicationController
   end
 
   def map
-    post_detail = PostDetail.find(params[:post_detail_id])
+    @post_detail = PostDetail.find(params[:post_detail_id])
   end
 
   private
