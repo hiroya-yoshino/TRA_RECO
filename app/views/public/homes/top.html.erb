@@ -64,7 +64,9 @@
                   <i class="fas fa-map-marker-alt"></i>
                   <%= Post.locations_i18n[pos.location] %>
                 </p>
-                <p class="mx-4 mt-3"><%= pos.date_display %></p>
+                <% if pos.present? %>
+                　<p class="mx-4 mt-3"><%= pos.date_display %></p>
+                <% end %>
               </div>
             </div>
           </div>
