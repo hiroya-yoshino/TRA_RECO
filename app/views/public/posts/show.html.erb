@@ -64,7 +64,9 @@
           </div>
           <div class="row">
             <div class="col-4 px-0 d-flex align-items-center">
-              <h5 class="mb-0"><%= post_detail.visit_time.strftime("%-m/%-d %-H:%M") %></h5>
+              <% if post_detail.visit_time.present? %>
+                <h5 class="mb-0"><%= post_detail.visit_time.strftime("%-m/%-d %-H:%M") %></h5>
+              <% end %>
             </div>
             <div class="col-8 px-0 text-right">
               <% if @post.user.id == current_user&.id %>
