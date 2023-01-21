@@ -4,6 +4,9 @@ class Post < ApplicationRecord
   has_many :reviews, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  
+  validates :title, presence: true
+  validates :location, presence: true
 
   enum location: {
     hokkaidou:1,aomoriken:2,iwateken:3,miyagiken:4,akitaken:5,yamagataken:6,fukusimaken:7,
