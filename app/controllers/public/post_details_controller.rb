@@ -7,6 +7,8 @@ class Public::PostDetailsController < ApplicationController
     @post_detail.post = @post
     if @post_detail.save
       redirect_to post_path(@post_detail.post_id)
+    else
+      render 'public/posts/show'
     end
   end
 
