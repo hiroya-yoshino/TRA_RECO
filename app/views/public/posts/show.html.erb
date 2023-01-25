@@ -88,6 +88,14 @@
       <% if @post.user.id == current_user&.id %>
         <div class="row mt-3">
           <div class="col-md-11 mx-auto">
+            <% if @post_detail.errors.any? %>
+              <%= @post_detail.errors.count %>件のエラーが発生しました
+              <ul>
+                  <% @post_detail.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                  <% end %>
+              </ul>
+            <% end %>
             <%= form_with model: [@post, @post_detail], method: :post do |f| %>
               <h5 class ="form-group font-weight-bold text-center">旅ルート登録</h5>
               <%= render 'public/post_details/form', f: f %>
