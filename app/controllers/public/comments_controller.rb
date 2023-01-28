@@ -9,6 +9,13 @@ class Public::CommentsController < ApplicationController
     if @comment.save
       redirect_to post_path(@post.id)
     else
+      @comments = @post.comments
+      @comment = Comment.new
+      @post_details = @post.post_details.order(visit_time: :ASC)
+      if current_user&.id == @post.user_id
+        @post_detail = PostDetail.new
+        @post_detail.post_id = @post.id
+      end
       render 'public/posts/show'
     end
   end
