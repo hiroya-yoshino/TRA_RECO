@@ -35,15 +35,17 @@
           <%= Post.locations_i18n[@post.location] %>
         </p>
         <p class="mx-4 mb-0 d-flex align-items-center"><%= @post.date_display %></p>
-        <% if @post.favorited_by?(current_user) %>
-          <%= link_to post_favorites_path(@post), method: :delete, class: "mx-4 mb-0 d-flex align-items-center" do %>
-            <i class="fas fa-heart"></i>
-            <%= @post.favorites.count %>
-          <% end %>
-        <% else %>
-          <%= link_to post_favorites_path(@post), method: :post, class: "mx-4 mb-0 d-flex align-items-center" do %>
-            <i class="far fa-heart"></i>
-            <%= @post.favorites.count %>
+        <% if !current_user.nil? %>
+          <% if @post.favorited_by?(current_user) %>
+            <%= link_to post_favorites_path(@post), method: :delete, class: "mx-4 mb-0 d-flex align-items-center" do %>
+              <i class="fas fa-heart"></i>
+              <%= @post.favorites.count %>
+            <% end %>
+          <% else %>
+            <%= link_to post_favorites_path(@post), method: :post, class: "mx-4 mb-0 d-flex align-items-center" do %>
+              <i class="far fa-heart"></i>
+              <%= @post.favorites.count %>
+            <% end %>
           <% end %>
         <% end %>
         <% if @post.user.id == current_user&.id %>
