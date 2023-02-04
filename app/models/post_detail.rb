@@ -3,7 +3,7 @@ class PostDetail < ApplicationRecord
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
 
-  has_one_attached :image
+  has_many_attached :image
 
   validates :spot_name, presence: true
 
