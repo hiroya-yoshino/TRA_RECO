@@ -55,8 +55,8 @@
       <% @post_details.each do |post_detail| %>
         <div class="col-md-12 my-4 border-bottom">
           <div class="row">
-            <% if post_detail.images.present? %>
-              <% post_detail.images.each do |image| %>
+            <% if post_detail.image.attached? %>
+              <% post_detail.image.each do |image| %>
                 <%= image_tag image, class: "mx-auto post_show_image" %>
               <% end %>
             <% else %>
