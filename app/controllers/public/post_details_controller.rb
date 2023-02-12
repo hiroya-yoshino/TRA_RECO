@@ -38,7 +38,7 @@ class Public::PostDetailsController < ApplicationController
     post_detail.destroy
     redirect_to post_path(@post.id)
   end
-  
+
   def upload_image
     @image = create_blob(params[:image])
     render json: @image
@@ -51,6 +51,6 @@ class Public::PostDetailsController < ApplicationController
   private
 
   def post_detail_params
-    params.require(:post_detail).permit(:spot_name, :visit_time, :impre, :image [], :address)
+    params.require(:post_detail).permit(:spot_name, :visit_time, :impre, :image [], :address).merge(images: uploaded_images)
   end
 end
