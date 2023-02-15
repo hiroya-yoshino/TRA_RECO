@@ -53,4 +53,9 @@ class Public::PostDetailsController < ApplicationController
   def post_detail_params
     params.require(:post_detail).permit(:spot_name, :visit_time, :impre, :image [], :address).merge(images: uploaded_images)
   end
+
+  def uploaded_images
+    params[:post_detail][:images].drop(1).map{|id| ActiveStorage::Blob.find(id)} if params[:post_detail][:images]
+  end
+
 end
