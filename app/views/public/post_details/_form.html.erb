@@ -1,7 +1,20 @@
 <div class="form-group mb-0">
   <p class="text-dark mb-0 mt-2">旅画像</p>
-  <%= f.file_field :images, multiple: true, accept: "image/*", class: "mr-auto" %>
+  <%= f.file_field :images, multiple: true, accept: "image/*", class: "mr-auto", data: { images_target: "select", action: "change->images#selectImages" } %>
 </div>
+<div data-images-target="preview">
+    <% if @post_detail.images.attached? %>
+      <% @post_detail.images.each do |image| %>
+        <div class="image-box inline-flex mx-1 mb-5" data-controller="images" data-images-target= "image_box">
+          <div class="text-center">
+            <%= image_tag image, width: "100" %>
+            <a class="link cursor-pointer" data-action="click->images#deleteImage">削除</a>
+            <%= f.hidden_field :images, name: "post[images][]", style: "display: none", value: "#{image.blob.id}" %>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
 <div class="form-group mb-0">
   <p class="text-dark mb-0 mt-2">スポット名</p>
   <%= f.text_field :spot_name, class: "form-control" %>
