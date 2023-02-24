@@ -94,9 +94,9 @@
             <% if @post_detail.errors.any? %>
               <%= @post_detail.errors.count %>件のエラーが発生しました
               <ul>
-                  <% @post_detail.errors.full_messages.each do |message| %>
+                <% @post_detail.errors.full_messages.each do |message| %>
                   <li><%= message %></li>
-                  <% end %>
+                <% end %>
               </ul>
             <% end %>
             <%= form_with model: [@post, @post_detail], method: :post do |f| %>
@@ -121,7 +121,7 @@
               <li><%= message %></li>
             <% end %>
           </ul>
-    <% end %>
+        <% end %>
         <%= form_with model:[@post, @comment], method: :post do |f| %>
           <div class="form-group mb-4">
             <div class="row">

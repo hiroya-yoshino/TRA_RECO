@@ -59,11 +59,7 @@ class Public::PostDetailsController < ApplicationController
   end
 
   def create_blob(file)
-    ActiveStorage::Blob.create_and_upload!(
-      io: file.open,
-      filename: file.original_filename,
-      content_type: file.content_type
-    )
+    ActiveStorage::Blob.create_and_upload!(io: file.open, filename: file.original_filename, content_type: file.content_type)
   end
 
 end
