@@ -58,8 +58,4 @@ class Public::PostDetailsController < ApplicationController
     params[:post_detail][:images].drop(1).map{|id| ActiveStorage::Blob.find(id)} if params[:post_detail][:images]
   end
 
-  def create_blob(file)
-    ActiveStorage::Blob.create_and_upload!(io: file.open, filename: file.original_filename, content_type: file.content_type)
-  end
-
 end
